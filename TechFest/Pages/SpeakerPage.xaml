@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TechFest.Pages.SpeakerPage">
+  <ContentPage.Content>
+    <ScrollView>
+      <StackLayout>
+        <Image Source="{Binding Speaker.ImageUrl}" />
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Name: "/>
+          <Label Text="{Binding Speaker.Name}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Link: "/>
+          <Label Text="{Binding Speaker.Link}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Company: "/>
+          <Label Text="{Binding Speaker.Company}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Tagline: "/>
+          <Label Text="{Binding Speaker.Tagline}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Bio: "/>
+          <Label Text="{Binding Speaker.Bio}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Facebook: "/>
+          <Label Text="{Binding Speaker.Facebook}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Google Plus: "/>
+          <Label Text="{Binding Speaker.GooglePlus}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Instagram: "/>
+          <Label Text="{Binding Speaker.Instagram}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="LinkedIn: "/>
+          <Label Text="{Binding Speaker.LinkedIn}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="RSS: "/>
+          <Label Text="{Binding Speaker.Rss}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Twitter: "/>
+          <Label Text="{Binding Speaker.Twitter}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="YouTube: "/>
+          <Label Text="{Binding Speaker.YouTube}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Flickr: "/>
+          <Label Text="{Binding Speaker.Flickr}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Github: "/>
+          <Label Text="{Binding Speaker.Github}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Foursquare: "/>
+          <Label Text="{Binding Speaker.Foursquare}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Pinterest: "/>
+          <Label Text="{Binding Pinterest}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Dribble: "/>
+          <Label Text="{Binding Speaker.Dribble}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="MySpace: "/>
+          <Label Text="{Binding Speaker.MySpace}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="SlideShare: "/>
+          <Label Text="{Binding Speaker.SlideShare}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Foursquare: "/>
+          <Label Text="{Binding Speaker.Foursquare}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Speaker Deck: "/>
+          <Label Text="{Binding SpeakerDeck}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Sound Cloud: "/>
+          <Label Text="{Binding Speaker.SoundCloud}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Tumblr: "/>
+          <Label Text="{Binding Speaker.Tumblr}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Stack Overflow: "/>
+          <Label Text="{Binding Speaker.StackOverflow}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="About Me: "/>
+          <Label Text="{Binding Speaker.AboutMe}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="Branded Me: "/>
+          <Label Text="{Binding Speaker.BrandedMe}"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <Label  Text="XING: "/>
+          <Label Text="{Binding Speaker.XING}"/>
+        </StackLayout>
+      </StackLayout>
+    </ScrollView>
+  </ContentPage.Content>
+</ContentPage>

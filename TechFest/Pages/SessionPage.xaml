@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TechFest.Pages.SessionPage">
+  <ScrollView>
+    <StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label  Text="Title: "/>
+        <Label Text="{Binding Session.Title}"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label  Text="Track: "/>
+        <Label Text="{Binding Session.Track}"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label  Text="Timeslot: "/>
+        <Label Text="{Binding Session.Timeslot}"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label  Text="Day: "/>
+        <Label Text="{Binding Session.Day}"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label  Text="Speaker: "/>
+        <Label Text="{Binding Session.Speakers}"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label  Text="Description: "/>
+        <Label Text="{Binding Session.Description}"/>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal">
+        <Label  Text="Votes: "/>
+        <Label Text="{Binding Session.Votes}"/>
+      </StackLayout>
+    </StackLayout>
+  </ScrollView>
+</ContentPage>
