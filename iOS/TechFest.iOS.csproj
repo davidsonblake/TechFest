@@ -106,7 +106,7 @@
     <OptimizePNGs>True</OptimizePNGs>
     <BuildIpa>True</BuildIpa>
     <IpaIncludeArtwork>False</IpaIncludeArtwork>
-    <CodesignProvision>e4991c76-2bb3-4740-96b7-617e503212c1</CodesignProvision>
+    <CodesignProvision>0573a950-e495-4298-9e80-08a638fef1a7</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Akavache, Version=4.1.2.0, Culture=neutral, processorArchitecture=MSIL">
