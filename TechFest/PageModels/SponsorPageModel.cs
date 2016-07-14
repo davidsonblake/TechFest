@@ -6,7 +6,7 @@ namespace TechFest.PageModels
     {
         public Sponsor Sponsor { get; set; }
 
-        public SponsorPageModel(IDataService dataService) 
+        public SponsorPageModel(IDataService dataService)
             : base(dataService)
         {
         }

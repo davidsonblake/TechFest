@@ -6,7 +6,7 @@ namespace TechFest.PageModels
     {
         public Speaker Speaker { get; set; }
 
-        public SpeakerPageModel(IDataService dataService) 
+        public SpeakerPageModel(IDataService dataService)
             : base(dataService)
         {
         }

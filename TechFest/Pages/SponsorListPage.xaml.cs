@@ -2,12 +2,11 @@
 
 namespace TechFest.Pages
 {
-	public partial class SponsorListPage : ContentPage
-	{
-		public SponsorListPage()
-		{
-			InitializeComponent();
-		}
-	}
+    public partial class SponsorListPage : ContentPage
+    {
+        public SponsorListPage()
+        {
+            InitializeComponent();
+        }
+    }
 }
-

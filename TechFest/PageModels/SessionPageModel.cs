@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using TechFest.Models;
+﻿using TechFest.Models;
 
 namespace TechFest.PageModels
 {
@@ -7,7 +6,7 @@ namespace TechFest.PageModels
     {
         public Session Session { get; set; }
 
-        public SessionPageModel(IDataService dataService) 
+        public SessionPageModel(IDataService dataService)
             : base(dataService)
         {
         }

@@ -13,10 +13,10 @@
 // distribute, sublicense, and/or sell copies of the Software, and to
 // permit persons to whom the Software is furnished to do so, subject to
 // the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be
 // included in all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 // EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -25,42 +25,35 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace System.ServiceModel.Syndication
 {
-	[XmlRoot ("rss", Namespace = "")]
-	public class Rss20FeedFormatter<TSyndicationFeed> : Rss20FeedFormatter
-			where TSyndicationFeed : SyndicationFeed, new ()
-	{
-		public Rss20FeedFormatter ()
-			: base (typeof (TSyndicationFeed))
-		{
-		}
+    [XmlRoot("rss", Namespace = "")]
+    public class Rss20FeedFormatter<TSyndicationFeed> : Rss20FeedFormatter
+            where TSyndicationFeed : SyndicationFeed, new()
+    {
+        public Rss20FeedFormatter()
+            : base(typeof(TSyndicationFeed))
+        {
+        }
 
-		public Rss20FeedFormatter (TSyndicationFeed feedToWrite)
-			: base (typeof (TSyndicationFeed))
-		{
-			SetFeed (feedToWrite);
-		}
+        public Rss20FeedFormatter(TSyndicationFeed feedToWrite)
+            : base(typeof(TSyndicationFeed))
+        {
+            SetFeed(feedToWrite);
+        }
 
-		public Rss20FeedFormatter (TSyndicationFeed feedToWrite, bool serializeExtensionsAsAtom)
-			: base (typeof (TSyndicationFeed))
-		{
-			SetFeed (feedToWrite);
-			SerializeExtensionsAsAtom = serializeExtensionsAsAtom;
-		}
+        public Rss20FeedFormatter(TSyndicationFeed feedToWrite, bool serializeExtensionsAsAtom)
+            : base(typeof(TSyndicationFeed))
+        {
+            SetFeed(feedToWrite);
+            SerializeExtensionsAsAtom = serializeExtensionsAsAtom;
+        }
 
-		protected override SyndicationFeed CreateFeedInstance ()
-		{
-			return Activator.CreateInstance<TSyndicationFeed> ();
-		}
-	}
+        protected override SyndicationFeed CreateFeedInstance()
+        {
+            return Activator.CreateInstance<TSyndicationFeed>();
+        }
+    }
 }

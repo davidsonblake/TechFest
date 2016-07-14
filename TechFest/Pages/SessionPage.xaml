@@ -5,32 +5,32 @@
   <ScrollView>
     <StackLayout>
       <StackLayout Orientation="Horizontal">
-        <Label  Text="Title: "/>
-        <Label Text="{Binding Session.Title}"/>
+        <Label  Text="Title: " />
+        <Label Text="{Binding Session.Title}" />
       </StackLayout>
       <StackLayout Orientation="Horizontal">
-        <Label  Text="Track: "/>
-        <Label Text="{Binding Session.Track}"/>
+        <Label  Text="Track: " />
+        <Label Text="{Binding Session.Track}" />
       </StackLayout>
       <StackLayout Orientation="Horizontal">
-        <Label  Text="Timeslot: "/>
-        <Label Text="{Binding Session.Timeslot}"/>
+        <Label  Text="Timeslot: " />
+        <Label Text="{Binding Session.Timeslot}" />
       </StackLayout>
       <StackLayout Orientation="Horizontal">
-        <Label  Text="Day: "/>
-        <Label Text="{Binding Session.Day}"/>
+        <Label  Text="Day: " />
+        <Label Text="{Binding Session.Day}" />
       </StackLayout>
       <StackLayout Orientation="Horizontal">
-        <Label  Text="Speaker: "/>
-        <Label Text="{Binding Session.Speakers}"/>
+        <Label  Text="Speaker: " />
+        <Label Text="{Binding Session.Speakers}" />
       </StackLayout>
       <StackLayout Orientation="Horizontal">
-        <Label  Text="Description: "/>
-        <Label Text="{Binding Session.Description}"/>
+        <Label  Text="Description: " />
+        <Label Text="{Binding Session.Description}" />
       </StackLayout>
       <StackLayout Orientation="Horizontal">
-        <Label  Text="Votes: "/>
-        <Label Text="{Binding Session.Votes}"/>
+        <Label  Text="Votes: " />
+        <Label Text="{Binding Session.Votes}" />
       </StackLayout>
     </StackLayout>
   </ScrollView>

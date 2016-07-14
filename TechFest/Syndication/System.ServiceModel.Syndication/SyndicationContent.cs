@@ -13,10 +13,10 @@
 // distribute, sublicense, and/or sell copies of the Software, and to
 // permit persons to whom the Software is furnished to do so, subject to
 // the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be
 // included in all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 // EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -25,102 +25,99 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
 namespace System.ServiceModel.Syndication
 {
-	public abstract class SyndicationContent
-	{
-		#region Static members
+    public abstract class SyndicationContent
+    {
+        #region Static members
 
-		public static TextSyndicationContent CreateHtmlContent (string content)
-		{
-			return new TextSyndicationContent (content, TextSyndicationContentKind.Html);
-		}
+        public static TextSyndicationContent CreateHtmlContent(string content)
+        {
+            return new TextSyndicationContent(content, TextSyndicationContentKind.Html);
+        }
 
-		public static TextSyndicationContent CreatePlaintextContent (string content)
-		{
-			return new TextSyndicationContent (content, TextSyndicationContentKind.Plaintext);
-		}
+        public static TextSyndicationContent CreatePlaintextContent(string content)
+        {
+            return new TextSyndicationContent(content, TextSyndicationContentKind.Plaintext);
+        }
 
-		public static TextSyndicationContent CreateXhtmlContent (string content)
-		{
-			return new TextSyndicationContent (content, TextSyndicationContentKind.XHtml);
-		}
+        public static TextSyndicationContent CreateXhtmlContent(string content)
+        {
+            return new TextSyndicationContent(content, TextSyndicationContentKind.XHtml);
+        }
 
-		public static UrlSyndicationContent CreateUrlContent (Uri url, string mediaType)
-		{
-			return new UrlSyndicationContent (url, mediaType);
-		}
+        public static UrlSyndicationContent CreateUrlContent(Uri url, string mediaType)
+        {
+            return new UrlSyndicationContent(url, mediaType);
+        }
 
-		public static XmlSyndicationContent CreateXmlContent (object dataContractObject)
-		{
-			return new XmlSyndicationContent (null, dataContractObject, (XmlObjectSerializer) null);
-		}
+        public static XmlSyndicationContent CreateXmlContent(object dataContractObject)
+        {
+            return new XmlSyndicationContent(null, dataContractObject, (XmlObjectSerializer)null);
+        }
 
-		public static XmlSyndicationContent CreateXmlContent (object dataContractObject, XmlObjectSerializer dataContractSerializer)
-		{
-			return new XmlSyndicationContent (null, dataContractObject, dataContractSerializer);
-		}
+        public static XmlSyndicationContent CreateXmlContent(object dataContractObject, XmlObjectSerializer dataContractSerializer)
+        {
+            return new XmlSyndicationContent(null, dataContractObject, dataContractSerializer);
+        }
 
-		public static XmlSyndicationContent CreateXmlContent (object xmlSerializerObject, XmlSerializer serializer)
-		{
-			return new XmlSyndicationContent (null, xmlSerializerObject, serializer);
-		}
+        public static XmlSyndicationContent CreateXmlContent(object xmlSerializerObject, XmlSerializer serializer)
+        {
+            return new XmlSyndicationContent(null, xmlSerializerObject, serializer);
+        }
 
-		public static XmlSyndicationContent CreateXmlContent (XmlReader reader)
-		{
-			return new XmlSyndicationContent (reader);
-		}
+        public static XmlSyndicationContent CreateXmlContent(XmlReader reader)
+        {
+            return new XmlSyndicationContent(reader);
+        }
 
-		#endregion
+        #endregion Static members
 
-		#region Instance members
+        #region Instance members
 
-		SyndicationExtensions extensions = new SyndicationExtensions ();
+        private SyndicationExtensions extensions = new SyndicationExtensions();
 
-		protected SyndicationContent ()
-		{
-		}
+        protected SyndicationContent()
+        {
+        }
 
-		protected SyndicationContent (SyndicationContent source)
-		{
-			if (source == null)
-				throw new ArgumentNullException ("source");
-			extensions = source.extensions.Clone ();
-		}
+        protected SyndicationContent(SyndicationContent source)
+        {
+            if (source == null)
+                throw new ArgumentNullException("source");
+            extensions = source.extensions.Clone();
+        }
 
-		public Dictionary<XmlQualifiedName, string> AttributeExtensions {
-			get { return extensions.Attributes; }
-		}
+        public Dictionary<XmlQualifiedName, string> AttributeExtensions
+        {
+            get { return extensions.Attributes; }
+        }
 
-		public abstract string Type { get; }
+        public abstract string Type { get; }
 
-		public abstract SyndicationContent Clone ();
+        public abstract SyndicationContent Clone();
 
-		protected abstract void WriteContentsTo (XmlWriter writer);
+        protected abstract void WriteContentsTo(XmlWriter writer);
 
-		public void WriteTo (XmlWriter writer, string outerElementName, string outerElementNamespace)
-		{
-			if (writer == null)
-				throw new ArgumentNullException ("writer");
-			if (outerElementName == null)
-				throw new ArgumentNullException ("outerElementName");
-			if (outerElementNamespace == null)
-				throw new ArgumentNullException ("outerElementNamespace");
-			writer.WriteStartElement (outerElementName, outerElementNamespace);
-			writer.WriteAttributeString ("type", Type);
-			WriteContentsTo (writer);
-			writer.WriteFullEndElement ();
-		}
+        public void WriteTo(XmlWriter writer, string outerElementName, string outerElementNamespace)
+        {
+            if (writer == null)
+                throw new ArgumentNullException("writer");
+            if (outerElementName == null)
+                throw new ArgumentNullException("outerElementName");
+            if (outerElementNamespace == null)
+                throw new ArgumentNullException("outerElementNamespace");
+            writer.WriteStartElement(outerElementName, outerElementNamespace);
+            writer.WriteAttributeString("type", Type);
+            WriteContentsTo(writer);
+            writer.WriteFullEndElement();
+        }
 
-		#endregion
-	}
+        #endregion Instance members
+    }
 }

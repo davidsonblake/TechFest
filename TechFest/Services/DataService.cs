@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Akavache;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,38 +8,19 @@ using System.ServiceModel.Syndication;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
-using Akavache;
 using TechFest.Models;
 
 namespace TechFest.Services
 {
-	public class DataService : IDataService
-	{
-		private string _baseUrl;
-		private readonly FeedParser _parser = new FeedParser();
-        
-		public async Task<List<Event>> GetCurrentEventsAsync()
-		{
+    public class DataService : IDataService
+    {
+        private string _baseUrl;
+        private readonly FeedParser _parser = new FeedParser();
+
+        public async Task<List<Event>> GetCurrentEventsAsync()
+        {
             var url = "http://techfests.com/_layouts/powerrss.aspx?list=events&options=filter=current";
 
-		    return await BlobCache.LocalMachine.GetOrFetchObject(url, async () =>
-		    {
-		        var rssItems = (await _parser.Parse(new Uri(url, UriKind.Absolute))).ToList();
-		        var events = GetObjects<Event>(rssItems);
-
-		        for (int i = 0; i < events.Count(); i++)
-		        {
-		            events[i].Title = rssItems[i].Title.Text;
-		        }
-
-		        return events;
-		    }, DateTimeOffset.Now.AddDays(1));
-		}
-
-		public async Task<List<Event>> GetPreviousEventsAsync()
-		{
-		    var url = "http://techfests.com/_layouts/powerrss.aspx?list=events&options=filter=past";
-            
             return await BlobCache.LocalMachine.GetOrFetchObject(url, async () =>
             {
                 var rssItems = (await _parser.Parse(new Uri(url, UriKind.Absolute))).ToList();
@@ -53,124 +35,143 @@ namespace TechFest.Services
             }, DateTimeOffset.Now.AddDays(1));
         }
 
-		public async Task<List<Session>> GetSessionsAsync()
-		{
-			if (string.IsNullOrEmpty(_baseUrl))
-				return default(List<Session>);
+        public async Task<List<Event>> GetPreviousEventsAsync()
+        {
+            var url = "http://techfests.com/_layouts/powerrss.aspx?list=events&options=filter=past";
 
-		    var url = $"{_baseUrl}/_layouts/powerrss.aspx?list=Sessions";
+            return await BlobCache.LocalMachine.GetOrFetchObject(url, async () =>
+            {
+                var rssItems = (await _parser.Parse(new Uri(url, UriKind.Absolute))).ToList();
+                var events = GetObjects<Event>(rssItems);
 
-		    return await BlobCache.LocalMachine.GetOrFetchObject(url, async () =>
-		    {
+                for (int i = 0; i < events.Count(); i++)
+                {
+                    events[i].Title = rssItems[i].Title.Text;
+                }
 
-		        var rssItems = (await _parser.Parse(new Uri(url, UriKind.Absolute))).ToList();
-		        var sessions = GetObjects<Models.Session>(rssItems);
+                return events;
+            }, DateTimeOffset.Now.AddDays(1));
+        }
 
-		        for (int i = 0; i < sessions.Count(); i++)
-		        {
-		            sessions[i].Title = rssItems[i].Title.Text;
-		        }
+        public async Task<List<Session>> GetSessionsAsync()
+        {
+            if (string.IsNullOrEmpty(_baseUrl))
+                return default(List<Session>);
 
-		        return sessions;
-		    }, DateTimeOffset.Now.AddDays(1));
-		}
+            var url = $"{_baseUrl}/_layouts/powerrss.aspx?list=Sessions";
 
-		public async Task<List<Speaker>> GetSpeakersAsync()
-		{
-			if (string.IsNullOrEmpty(_baseUrl))
-				return default(List<Speaker>);
+            return await BlobCache.LocalMachine.GetOrFetchObject(url, async () =>
+            {
+                var rssItems = (await _parser.Parse(new Uri(url, UriKind.Absolute))).ToList();
+                var sessions = GetObjects<Models.Session>(rssItems);
 
-		    var url = $"{_baseUrl}/_layouts/powerrss.aspx?list=Speakers";
+                for (int i = 0; i < sessions.Count(); i++)
+                {
+                    sessions[i].Title = rssItems[i].Title.Text;
+                }
 
-		    return await BlobCache.LocalMachine.GetOrFetchObject(url, async () =>
-		    {
-		        var rssItems = (await _parser.Parse(new Uri(url, UriKind.Absolute))).ToList();
-		        var speakers = GetObjects<Models.Speaker>(rssItems);
+                return sessions;
+            }, DateTimeOffset.Now.AddDays(1));
+        }
 
-		        for (int i = 0; i < speakers.Count(); i++)
-		        {
-		            speakers[i].Name = rssItems[i].Title.Text;
-		        }
+        public async Task<List<Speaker>> GetSpeakersAsync()
+        {
+            if (string.IsNullOrEmpty(_baseUrl))
+                return default(List<Speaker>);
 
-		        return speakers;
-		    }, DateTimeOffset.Now.AddDays(1));
-		}
+            var url = $"{_baseUrl}/_layouts/powerrss.aspx?list=Speakers";
 
-		public async Task<List<Sponsor>> GetSponsersAsync()
-		{
-			if (string.IsNullOrEmpty(_baseUrl))
-				return default(List<Sponsor>);
+            return await BlobCache.LocalMachine.GetOrFetchObject(url, async () =>
+            {
+                var rssItems = (await _parser.Parse(new Uri(url, UriKind.Absolute))).ToList();
+                var speakers = GetObjects<Models.Speaker>(rssItems);
 
-		    var url = $"{_baseUrl}/_layouts/powerrss.aspx?list=Sponsors";
+                for (int i = 0; i < speakers.Count(); i++)
+                {
+                    speakers[i].Name = rssItems[i].Title.Text;
+                }
 
-		    return await BlobCache.LocalMachine.GetOrFetchObject(url, async () =>
-		    {
-		        var rssItems = (await _parser.Parse(new Uri(url, UriKind.Absolute))).ToList();
-		        var sponsors = GetObjects<Sponsor>(rssItems);
+                return speakers;
+            }, DateTimeOffset.Now.AddDays(1));
+        }
 
-		        for (int i = 0; i < sponsors.Count(); i++)
-		        {
-		            sponsors[i].Name = rssItems[i].Title.Text;
-		        }
+        public async Task<List<Sponsor>> GetSponsersAsync()
+        {
+            if (string.IsNullOrEmpty(_baseUrl))
+                return default(List<Sponsor>);
 
-		        return sponsors;
-		    }, DateTimeOffset.Now.AddDays(1));
-		}
+            var url = $"{_baseUrl}/_layouts/powerrss.aspx?list=Sponsors";
 
-		public async Task<List<Track>> GetTracksAsync()
-		{
-			if (string.IsNullOrEmpty(_baseUrl))
-				return default(List<Track>);
-            
-		    var url = $"{_baseUrl}/_layouts/powerrss.aspx?list=Tracks";
+            return await BlobCache.LocalMachine.GetOrFetchObject(url, async () =>
+            {
+                var rssItems = (await _parser.Parse(new Uri(url, UriKind.Absolute))).ToList();
+                var sponsors = GetObjects<Sponsor>(rssItems);
 
-		    return await BlobCache.LocalMachine.GetOrFetchObject(url, async () =>
-		    {
-		        var rssItems = (await _parser.Parse(new Uri(url, UriKind.Absolute))).ToList();
-		        var tracks = GetObjects<Track>(rssItems);
+                for (int i = 0; i < sponsors.Count(); i++)
+                {
+                    sponsors[i].Name = rssItems[i].Title.Text;
+                }
 
-		        for (int i = 0; i < tracks.Count(); i++)
-		        {
-		            tracks[i].Title = rssItems[i].Title.Text;
-		        }
+                return sponsors;
+            }, DateTimeOffset.Now.AddDays(1));
+        }
 
-		        return tracks;
-		    }, DateTimeOffset.Now.AddDays(1));
-		}
+        public async Task<List<Track>> GetTracksAsync()
+        {
+            if (string.IsNullOrEmpty(_baseUrl))
+                return default(List<Track>);
 
-		public void SetBaseUrl(string baseUrl)
-		{
-			if (!string.IsNullOrEmpty(baseUrl) && baseUrl.EndsWith("/", StringComparison.CurrentCulture))
-				baseUrl = baseUrl.Remove(baseUrl.LastIndexOf("/", StringComparison.CurrentCulture));
-			
-			_baseUrl = baseUrl;
-		}
+            var url = $"{_baseUrl}/_layouts/powerrss.aspx?list=Tracks";
 
-		private List<T> GetObjects<T>(IEnumerable<SyndicationItem> items)
-		{
-			var list = new List<T>();
+            return await BlobCache.LocalMachine.GetOrFetchObject(url, async () =>
+            {
+                var rssItems = (await _parser.Parse(new Uri(url, UriKind.Absolute))).ToList();
+                var tracks = GetObjects<Track>(rssItems);
 
-			foreach (var item in items) {
-				foreach (SyndicationElementExtension extension in item.ElementExtensions) {
-					if (extension.OuterName == "field") 
-					{
-						var obj = extension.GetObject<XElement>();
-						list.Add(DeserializeExtension<T>(obj));
-					}
-				}
-			}
+                for (int i = 0; i < tracks.Count(); i++)
+                {
+                    tracks[i].Title = rssItems[i].Title.Text;
+                }
 
-			return list;
-		}
+                return tracks;
+            }, DateTimeOffset.Now.AddDays(1));
+        }
 
-		private T DeserializeExtension<T>(XElement element)
-		{
-			Type type = typeof(T);
-			StringReader reader = new StringReader(element.ToString());
-			XmlSerializer xmlSerializer = new XmlSerializer(type);
-			var obj = (T)xmlSerializer.Deserialize(reader);
+        public void SetBaseUrl(string baseUrl)
+        {
+            if (!string.IsNullOrEmpty(baseUrl) && baseUrl.EndsWith("/", StringComparison.CurrentCulture))
+                baseUrl = baseUrl.Remove(baseUrl.LastIndexOf("/", StringComparison.CurrentCulture));
 
-			return obj;
-		}
-	}
+            _baseUrl = baseUrl;
+        }
+
+        private List<T> GetObjects<T>(IEnumerable<SyndicationItem> items)
+        {
+            var list = new List<T>();
+
+            foreach (var item in items)
+            {
+                foreach (SyndicationElementExtension extension in item.ElementExtensions)
+                {
+                    if (extension.OuterName == "field")
+                    {
+                        var obj = extension.GetObject<XElement>();
+                        list.Add(DeserializeExtension<T>(obj));
+                    }
+                }
+            }
+
+            return list;
+        }
+
+        private T DeserializeExtension<T>(XElement element)
+        {
+            Type type = typeof(T);
+            StringReader reader = new StringReader(element.ToString());
+            XmlSerializer xmlSerializer = new XmlSerializer(type);
+            var obj = (T)xmlSerializer.Deserialize(reader);
+
+            return obj;
+        }
+    }
 }

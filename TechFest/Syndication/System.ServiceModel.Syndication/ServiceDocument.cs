@@ -13,10 +13,10 @@
 // distribute, sublicense, and/or sell copies of the Software, and to
 // permit persons to whom the Software is furnished to do so, subject to
 // the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be
 // included in all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 // EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -25,150 +25,154 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.ServiceModel;
-using System.ServiceModel.Channels;
 using System.Xml;
 
 namespace System.ServiceModel.Syndication
 {
-	public class ServiceDocument
-	{
-		public static TServiceDocument Load<TServiceDocument> (XmlReader reader)
-			where TServiceDocument : ServiceDocument, new()
-		{
-			var doc = new TServiceDocument ();
-			new AtomPub10ServiceDocumentFormatter<TServiceDocument> (doc).ReadFrom (reader);
-			return doc;
-		}
+    public class ServiceDocument
+    {
+        public static TServiceDocument Load<TServiceDocument>(XmlReader reader)
+            where TServiceDocument : ServiceDocument, new()
+        {
+            var doc = new TServiceDocument();
+            new AtomPub10ServiceDocumentFormatter<TServiceDocument>(doc).ReadFrom(reader);
+            return doc;
+        }
 
-		public static ServiceDocument Load (XmlReader reader)
-		{
-			return Load<ServiceDocument> (reader);
-		}
+        public static ServiceDocument Load(XmlReader reader)
+        {
+            return Load<ServiceDocument>(reader);
+        }
 
+        public ServiceDocument()
+        {
+            Workspaces = new Collection<Workspace>();
+        }
 
-		public ServiceDocument ()
-		{
-			Workspaces = new Collection<Workspace> ();
-		}
+        public ServiceDocument(IEnumerable<Workspace> workspaces)
+            : this()
+        {
+            if (workspaces != null)
+                foreach (var w in workspaces)
+                    Workspaces.Add(w);
+        }
 
-		public ServiceDocument (IEnumerable<Workspace> workspaces)
-			: this ()
-		{
-			if (workspaces != null)
-				foreach (var w in workspaces)
-					Workspaces.Add (w);
-		}
+        private ServiceDocumentFormatter formatter;
+        private SyndicationExtensions extensions = new SyndicationExtensions();
 
-		ServiceDocumentFormatter formatter;
-		SyndicationExtensions extensions = new SyndicationExtensions ();
+        internal ServiceDocumentFormatter InternalFormatter
+        {
+            set { formatter = value; }
+        }
 
-		internal ServiceDocumentFormatter InternalFormatter {
-			set { formatter = value; }
-		}
+        public Dictionary<XmlQualifiedName, string> AttributeExtensions
+        {
+            get { return extensions.Attributes; }
+        }
 
-		public Dictionary<XmlQualifiedName, string> AttributeExtensions {
-			get { return extensions.Attributes; }
-		}
+        public Uri BaseUri { get; set; }
 
-		public Uri BaseUri { get; set; }
+        public SyndicationElementExtensionCollection ElementExtensions
+        {
+            get { return extensions.Elements; }
+        }
 
-		public SyndicationElementExtensionCollection ElementExtensions {
-			get { return extensions.Elements; }
-		}
+        public string Language { get; set; }
 
-		public string Language { get; set; }
+        public Collection<Workspace> Workspaces { get; private set; }
 
-		public Collection<Workspace> Workspaces { get; private set; }
+        protected internal virtual Workspace CreateWorkspace()
+        {
+            return new Workspace();
+        }
 
+        public ServiceDocumentFormatter GetFormatter()
+        {
+            if (formatter == null)
+                formatter = new AtomPub10ServiceDocumentFormatter(this);
+            return formatter;
+        }
 
-		protected internal virtual Workspace CreateWorkspace ()
-		{
-			return new Workspace ();
-		}
+        public void Save(XmlWriter writer)
+        {
+            GetFormatter().WriteTo(writer);
+        }
 
-		public ServiceDocumentFormatter GetFormatter ()
-		{
-			if (formatter == null)
-				formatter = new AtomPub10ServiceDocumentFormatter (this);
-			return formatter;
-		}
+        protected internal virtual bool TryParseAttribute(string name, string ns, string value, string version)
+        {
+            if (version != "http://www.w3.org/2007/app")
+                return false;
 
-		public void Save (XmlWriter writer)
-		{
-			GetFormatter ().WriteTo (writer);
-		}
+            switch (ns)
+            {
+                case "http://www.w3.org/XML/1998/namespace":
+                    switch (name)
+                    {
+                        case "base":
+                            BaseUri = new Uri(value, UriKind.RelativeOrAbsolute);
+                            return true;
 
-		protected internal virtual bool TryParseAttribute (string name, string ns, string value, string version)
-		{
-			if (version != "http://www.w3.org/2007/app")
-				return false;
+                        case "lang":
+                            Language = value;
+                            return true;
+                    }
+                    return false;
+            }
+            return false;
+        }
 
-			switch (ns) {
-			case "http://www.w3.org/XML/1998/namespace":
-				switch (name) {
-				case "base":
-					BaseUri = new Uri (value, UriKind.RelativeOrAbsolute);
-					return true;
-				case "lang":
-					Language = value;
-					return true;
-				}
-				return false;
-			}
-			return false;
-		}
+        protected internal virtual bool TryParseElement(XmlReader reader, string version)
+        {
+            if (reader == null)
+                throw new ArgumentNullException("reader");
 
-		protected internal virtual bool TryParseElement (XmlReader reader, string version)
-		{
-			if (reader == null)
-				throw new ArgumentNullException ("reader");
+            reader.MoveToContent();
 
-			reader.MoveToContent ();
+            if (reader.LocalName != "service" || reader.NamespaceURI != version)
+                return false;
 
-			if (reader.LocalName != "service" || reader.NamespaceURI != version)
-				return false;
+            for (int i = 0; i < reader.AttributeCount; i++)
+            {
+                reader.MoveToAttribute(i);
+                if (!TryParseAttribute(reader.LocalName, reader.NamespaceURI, reader.Value, version))
+                    AttributeExtensions.Add(new XmlQualifiedName(reader.LocalName, reader.NamespaceURI), reader.Value);
+            }
+            reader.MoveToElement();
 
-			for (int i = 0; i < reader.AttributeCount; i++) {
-				reader.MoveToAttribute (i);
-				if (!TryParseAttribute (reader.LocalName, reader.NamespaceURI, reader.Value, version))
-					AttributeExtensions.Add (new XmlQualifiedName (reader.LocalName, reader.NamespaceURI), reader.Value);
-			}
-			reader.MoveToElement ();
+            if (reader.IsEmptyElement)
+                throw new XmlException("AtomPP service element requires at least one workspace element");
 
-			if (reader.IsEmptyElement)
-				throw new XmlException ("AtomPP service element requires at least one workspace element");
+            reader.ReadStartElement();
 
-			reader.ReadStartElement ();
+            for (reader.MoveToContent(); reader.NodeType != XmlNodeType.EndElement; reader.MoveToContent())
+            {
+                if (reader.LocalName == "workspace" && reader.NamespaceURI == version)
+                {
+                    var ws = CreateWorkspace();
+                    if (ws.TryParseElement(reader, version))
+                    {
+                        Workspaces.Add(ws);
+                        continue;
+                    }
+                }
+                ElementExtensions.Add(new SyndicationElementExtension(reader));
+            }
 
-			for (reader.MoveToContent (); reader.NodeType != XmlNodeType.EndElement; reader.MoveToContent ()) {
-				if (reader.LocalName == "workspace" && reader.NamespaceURI == version) {
-					var ws = CreateWorkspace ();
-					if (ws.TryParseElement (reader, version)) {
-						Workspaces.Add (ws);
-						continue;
-					}
-				}
-				ElementExtensions.Add (new SyndicationElementExtension (reader));
-			}
+            reader.ReadEndElement();
 
-			reader.ReadEndElement ();
+            return true;
+        }
 
-			return true;
-		}
+        protected internal virtual void WriteAttributeExtensions(XmlWriter writer, string version)
+        {
+            extensions.WriteAttributeExtensions(writer, version);
+        }
 
-		protected internal virtual void WriteAttributeExtensions (XmlWriter writer, string version)
-		{
-			extensions.WriteAttributeExtensions (writer, version);
-		}
-
-		protected internal virtual void WriteElementExtensions (XmlWriter writer, string version)
-		{
-			extensions.WriteElementExtensions (writer, version);
-		}
-	}
+        protected internal virtual void WriteElementExtensions(XmlWriter writer, string version)
+        {
+            extensions.WriteElementExtensions(writer, version);
+        }
+    }
 }

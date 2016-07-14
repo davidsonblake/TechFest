@@ -2,12 +2,11 @@
 
 namespace TechFest.Pages
 {
-	public partial class SessionListPage : ContentPage
-	{
-		public SessionListPage()
-		{
-			InitializeComponent();
-		}
-	}
+    public partial class SessionListPage : ContentPage
+    {
+        public SessionListPage()
+        {
+            InitializeComponent();
+        }
+    }
 }
-

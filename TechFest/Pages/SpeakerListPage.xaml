@@ -4,7 +4,7 @@
 		<ListView ItemsSource="{Binding Speakers}" SelectedItem="{Binding SelectedSpeaker}">
     		<ListView.ItemTemplate>
       			<DataTemplate>
-        			<ImageCell 
+        			<ImageCell
 						Text="{Binding Name}"
 						Detail="{Binding Company}"
 						ImageSource="{Binding ThumbnailUrl}">

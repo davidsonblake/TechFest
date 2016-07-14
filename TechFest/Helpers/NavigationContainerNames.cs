@@ -1,10 +1,8 @@
-﻿using System;
-namespace TechFest
+﻿namespace TechFest
 {
-	public class NavigationContainerNames
-	{
-		public const string EventSelectionContainer = "EventSelectionContainer";
-		public const string MainContainer = "MainContainer";
-	}
+    public class NavigationContainerNames
+    {
+        public const string EventSelectionContainer = "EventSelectionContainer";
+        public const string MainContainer = "MainContainer";
+    }
 }
-

@@ -2,6 +2,7 @@
   "dependencies": {
     "akavache": "4.1.2",
     "FreshMvvm": "2.1.0",
+    "HockeySDK.UWP": "4.1.1",
     "linqtotwitter": "4.1.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "Xamarin.Forms": "2.3.0.107"

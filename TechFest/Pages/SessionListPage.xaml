@@ -1,15 +1,34 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TechFest.Pages.SessionListPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:TechFest.Helpers;assembly=TechFest"
+             x:Class="TechFest.Pages.SessionListPage">
 	<ContentPage.Content>
-		<ListView ItemsSource="{Binding Sessions}" 
+   <Grid>
+    <Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
+		<ListView BackgroundColor="Transparent" ItemsSource="{Binding Sessions}"
               SelectedItem="{Binding SelectedSession}"
               IsGroupingEnabled="True"
-              GroupDisplayBinding="{Binding Title}" >
-    		<ListView.ItemTemplate>
-      			<DataTemplate>
-        			<TextCell Text="{Binding Title}" />
-      			</DataTemplate>
-    		</ListView.ItemTemplate>
-  		</ListView>
+              GroupDisplayBinding="{Binding Title}"
+              HasUnevenRows="True">
+      <ListView.GroupHeaderTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <StackLayout BackgroundColor="#6B027473">
+              <Label TextColor="#fdfdfd" FontFamily="AvenirNext-Bold" FontSize="27.55" Text="{Binding Title}"  />
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.GroupHeaderTemplate>
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell >
+            <StackLayout BackgroundColor="#8C02d2d0">
+              <Label TextColor="#cce1e2" FontFamily="AvenirNext-Medium" FontSize="13.55" Text="{Binding Title}"  />
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+      </ListView>
+   </Grid>
 	</ContentPage.Content>
 </ContentPage>

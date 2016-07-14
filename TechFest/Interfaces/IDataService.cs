@@ -4,20 +4,20 @@ using TechFest.Models;
 
 namespace TechFest
 {
-	public interface IDataService
-	{
-		void SetBaseUrl(string baseUrl);
+    public interface IDataService
+    {
+        void SetBaseUrl(string baseUrl);
 
-		Task<List<Event>> GetCurrentEventsAsync();
+        Task<List<Event>> GetCurrentEventsAsync();
 
-		Task<List<Event>> GetPreviousEventsAsync();
+        Task<List<Event>> GetPreviousEventsAsync();
 
-		Task<List<Session>> GetSessionsAsync();
+        Task<List<Session>> GetSessionsAsync();
 
-		Task<List<Speaker>> GetSpeakersAsync();
+        Task<List<Speaker>> GetSpeakersAsync();
 
-		Task<List<Sponsor>> GetSponsersAsync();
+        Task<List<Sponsor>> GetSponsersAsync();
 
-		Task<List<Track>> GetTracksAsync();
-	}
+        Task<List<Track>> GetTracksAsync();
+    }
 }
