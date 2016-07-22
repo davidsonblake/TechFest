@@ -1,16 +1,37 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TechFest.Pages.SpeakerListPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:TechFest.Helpers;assembly=TechFest"
+             x:Class="TechFest.Pages.SpeakerListPage">
 	<ContentPage.Content>
-		<ListView ItemsSource="{Binding Speakers}" SelectedItem="{Binding SelectedSpeaker}">
+    <Grid>
+      <Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
+		<ListView ItemsSource="{Binding Speakers}" 
+              BackgroundColor="Transparent"
+              HasUnevenRows="True"
+              SeparatorVisibility="None">
     		<ListView.ItemTemplate>
       			<DataTemplate>
-        			<ImageCell
-						Text="{Binding Name}"
-						Detail="{Binding Company}"
-						ImageSource="{Binding ThumbnailUrl}">
-					</ImageCell>
+              <ViewCell>
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                  </Grid.ColumnDefinitions>
+                  <StackLayout Grid.Column="0" HorizontalOptions="Center">
+                    <Image WidthRequest="170" HeightRequest="170" Aspect="AspectFit" Source="{Binding Speaker1.ThumbnailUrl}" />
+                    <Label TextColor="White" FontAttributes="Bold" Text="{Binding Speaker1.Name}" />
+                    <Label TextColor="Aqua" Text="{Binding Speaker1.Company}" />
+                  </StackLayout>
+                  <StackLayout Grid.Column="1" HorizontalOptions="Center">
+                    <Image WidthRequest="170" HeightRequest="170" Aspect="AspectFit" Source="{Binding Speaker2.ThumbnailUrl}" />
+                    <Label TextColor="White" FontAttributes="Bold" Text="{Binding Speaker2.Name}" />
+                    <Label TextColor="Aqua" Text="{Binding Speaker2.Company}" />
+                  </StackLayout>
+                </Grid>
+              </ViewCell>
       			</DataTemplate>
     		</ListView.ItemTemplate>
   		</ListView>
+      </Grid>
 	</ContentPage.Content>
 </ContentPage>

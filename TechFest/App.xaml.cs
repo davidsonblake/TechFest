@@ -4,6 +4,7 @@ using TechFest.PageModels;
 using TechFest.Services;
 using Xamarin.Forms;
 
+
 namespace TechFest
 {
     public partial class App : Application
@@ -16,17 +17,23 @@ namespace TechFest
             Akavache.BlobCache.ApplicationName = "TechFest";
 
             var mainTabbedNavigation = new FreshTabbedNavigationContainer(NavigationContainerNames.MainContainer);
-            mainTabbedNavigation.BackgroundColor = Color.FromHex("#152129");
-            mainTabbedNavigation.AddTab<SpeakerListPageModel>("Speakers", null);
-            mainTabbedNavigation.AddTab<SessionListPageModel>("Sessions", null);
-            mainTabbedNavigation.AddTab<SponsorListPageModel>("Sponsors", null);
-            mainTabbedNavigation.AddTab<FeedPageModel>("Feed", null);
+            mainTabbedNavigation.BarBackgroundColor = Color.FromHex("#152129");
+            mainTabbedNavigation.BarTextColor = Color.FromHex("#F05A79");
+            
+            var speakers = mainTabbedNavigation.AddTab<SpeakerListPageModel>("Speakers", null) as NavigationPage;
+            speakers.Icon = ImageSource.FromResource("TechFest.Images.speaker.png", typeof(App).Assembly()) as FileImageSource;
+            
+            var sessions = mainTabbedNavigation.AddTab<SessionListPageModel>("Sessions", null);
+            sessions.Icon = ImageSource.FromResource("TechFest.Images.code.png",(typeof(App).Assembly())) as FileImageSource;
+            
+            var sponsors = mainTabbedNavigation.AddTab<SponsorListPageModel>("Sponsors", null);
+            sponsors.Icon = ImageSource.FromResource("TechFest.Images.moneybag.png", typeof(App).Assembly()) as FileImageSource;
 
-            var eventsTabbedNavigation = new FreshTabbedNavigationContainer(NavigationContainerNames.EventSelectionContainer);
-            eventsTabbedNavigation.AddTab<CurrentEventsPageModel>("Current", null);
-            eventsTabbedNavigation.AddTab<PastEventsPageModel>("Past", null);
-
-            MainPage = eventsTabbedNavigation;
+            var page = FreshPageModelResolver.ResolvePageModel<EventListPageModel>();
+            var basicNavContainer = new FreshNavigationContainer(page, NavigationContainerNames.EventSelectionContainer);
+            basicNavContainer.BarBackgroundColor = Color.FromHex("#152129");
+            MainPage = basicNavContainer;
+            
         }
 
         private void RegisterIoc()

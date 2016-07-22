@@ -12,7 +12,6 @@ namespace TechFest.Pages
     {
         public EventItem()
         {
-            InitializeComponent();
         }
     }
 }

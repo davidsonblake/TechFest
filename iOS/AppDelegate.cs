@@ -18,7 +18,8 @@ namespace TechFest.iOS
             LoadApplication(new App());
 
             UITabBar.Appearance.BackgroundColor = UIColor.FromRGB(21, 33, 41);
-            UITabBar.Appearance.SelectedImageTintColor = UIColor.FromRGB(0x91, 0xCA, 0x47);
+            UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(21, 33, 41); //bar background
+            UINavigationBar.Appearance.TintColor = UIColor.White; //Tint color of button items
 
             return base.FinishedLaunching(app, options);
         }

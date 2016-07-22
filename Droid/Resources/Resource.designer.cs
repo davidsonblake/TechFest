@@ -147,6 +147,7 @@ namespace TechFest.Droid
 			global::HockeyApp.Resource.Style.HockeyApp_EditTextStyle = global::TechFest.Droid.Resource.Style.HockeyApp_EditTextStyle;
 			global::HockeyApp.Resource.Style.HockeyApp_SingleLineInputStyle = global::TechFest.Droid.Resource.Style.HockeyApp_SingleLineInputStyle;
 			global::ModernHttpClient.Resource.String.library_name = global::TechFest.Droid.Resource.String.library_name;
+			global::NGraphics.Android.Custom.Resource.String.library_name = global::TechFest.Droid.Resource.String.library_name;
 			global::Splat.Resource.String.library_name = global::TechFest.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::TechFest.Droid.Resource.Attribute.actionBarSize;
 		}

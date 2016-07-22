@@ -7,6 +7,7 @@ namespace TechFest.Models
     [XmlRoot(ElementName = "field")]
     public class Event
     {
+
         [XmlElement(ElementName = "Tagline")]
         public string Tagline { get; set; }
 
@@ -14,10 +15,10 @@ namespace TechFest.Models
         public string Url { get; set; }
 
         [XmlElement(ElementName = "StartDate")]
-        public DateTime? StartDate { get; set; }
+        public string StartDate { get; set; }
 
         [XmlElement(ElementName = "EndDate")]
-        public DateTime? EndDate { get; set; }
+        public string EndDate { get; set; }
 
         [XmlElement(ElementName = "Active")]
         public string Active { get; set; }
@@ -30,6 +31,6 @@ namespace TechFest.Models
 
         public string Title { get; set; }
 
-        public ICommand EventSelectedCommand { get; set; }
+        //public ICommand EventSelectedCommand { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace TechFest.PageModels
 {
     public class SpeakerListPageModel : BasePageModel
     {
-        public List<Speaker> Speakers { get; set; }
+        public List<SpeakerPair> Speakers { get; set; }
 
         private Speaker _selectedSpeaker;
 
@@ -40,8 +40,26 @@ namespace TechFest.PageModels
             try
             {
                 var speakers = await DataService.GetSpeakersAsync();
+                var pairs = new List<SpeakerPair>();
                 if (speakers != null)
-                    Speakers = speakers.OrderBy(x => x.SortOrder).ToList();
+                {
+                    for (int i = 0; i < speakers.Count; i = i + 2)
+                    {
+                        var items = speakers.Skip(i).Take(2);
+                        if (items != null)
+                        {
+                            var pair = new SpeakerPair();
+                            pair.Speaker1 = items.First();
+                            if (items.Count() > 1)
+                                pair.Speaker2 = items.Skip(1).Take(1).First();
+
+                            pairs.Add(pair);
+                        }
+                    }
+
+                    Speakers = pairs;
+
+                }
             }
             catch (Exception ex)
             {
