@@ -7,7 +7,6 @@ namespace TechFest.Models
     [XmlRoot(ElementName = "field")]
     public class Event
     {
-
         [XmlElement(ElementName = "Tagline")]
         public string Tagline { get; set; }
 
@@ -31,6 +30,5 @@ namespace TechFest.Models
 
         public string Title { get; set; }
 
-        //public ICommand EventSelectedCommand { get; set; }
     }
 }

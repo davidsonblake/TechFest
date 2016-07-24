@@ -1,6 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TechFest.App">
 	<Application.Resources>
-		<!-- Application resource dictionary -->
+		<ResourceDictionary>
+			<Color x:Key="titleBackground">#6B027473</Color>
+			<Color x:Key="detailBackground">#8C02d2d0</Color>
+
+			<Style x:Key="titleLabel" TargetType="Label">
+				<Setter Property="TextColor" Value="#fdfdfd" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="BackgroundColor" Value="Transparent" />
+				<Setter Property="FontFamily" Value="AvenirNext-Bold" />
+				<Setter Property="FontSize" Value="19.55" />
+			</Style>
+
+			<Style x:Key="detailLabel" TargetType="Label">
+				<Setter Property="TextColor" Value="#cce1e2" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="BackgroundColor" Value="Transparent" />
+				<Setter Property="FontFamily" Value="AvenirNext-Medium"  />
+				<Setter Property="FontSize" Value="13.55" />
+			</Style>
+		</ResourceDictionary>
 	</Application.Resources>
 </Application>

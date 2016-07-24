@@ -2,36 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using TechFest.Models;
-using Xamarin.Forms;
 
 namespace TechFest.PageModels
 {
-    public class SpeakerListPageModel : BasePageModel
+	public class SpeakerListPageModel : BasePageModel
     {
         public List<SpeakerPair> Speakers { get; set; }
-
-        private Speaker _selectedSpeaker;
-
-        public Speaker SelectedSpeaker
-        {
-            get
-            {
-                return _selectedSpeaker;
-            }
-            set
-            {
-                _selectedSpeaker = value;
-                if (value != null)
-                    SpeakerSelected.Execute(value);
-            }
-        }
 
         public SpeakerListPageModel(IDataService dataService)
             : base(dataService)
         {
         }
-
-        public Command<Speaker> SpeakerSelected => new Command<Speaker>(HandleSpeakerSelected);
 
         protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
@@ -48,7 +29,7 @@ namespace TechFest.PageModels
                         var items = speakers.Skip(i).Take(2);
                         if (items != null)
                         {
-                            var pair = new SpeakerPair();
+                            var pair = new SpeakerPair(HandleSpeakerSelected);
                             pair.Speaker1 = items.First();
                             if (items.Count() > 1)
                                 pair.Speaker2 = items.Skip(1).Take(1).First();

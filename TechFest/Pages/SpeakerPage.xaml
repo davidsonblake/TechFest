@@ -1,120 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TechFest.Pages.SpeakerPage">
+             xmlns:helpers="clr-namespace:TechFest.Helpers;assembly=TechFest"
+			 xmlns:svg="clr-namespace:SVG.Forms.Plugin.Abstractions;assembly=SVG.Forms.Plugin.Abstractions"
+			 xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+			 xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="TechFest.Pages.SpeakerPage"
+			 >
   <ContentPage.Content>
-    <ScrollView>
+	<Grid BackgroundColor="Transparent">
+	  <Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
+    <ScrollView BackgroundColor="Transparent">
       <StackLayout>
-        <Image Source="{Binding Speaker.ImageUrl}" />
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Name: " />
-          <Label Text="{Binding Speaker.Name}" />
+		<StackLayout HorizontalOptions="Start" Margin="15,15,15,5">
+        	<ffimageloading:CachedImage
+				WidthRequest="120" HeightRequest="120" 
+				Aspect="AspectFit"
+				Source="{Binding Speaker.ThumbnailUrl}">
+				<ffimageloading:CachedImage.Transformations>
+					<fftransformations:RoundedTransformation />
+				</ffimageloading:CachedImage.Transformations>
+			</ffimageloading:CachedImage>
+		</StackLayout>
+        <StackLayout BackgroundColor="#6B027473">
+        	<StackLayout VerticalOptions="Center" Margin="21,0,5,0">
+            	<Label VerticalTextAlignment="Center"
+								BackgroundColor="Transparent" 
+								TextColor="#fdfdfd" 
+								FontFamily="AvenirNext-Bold" 
+								FontSize="19.55" Text="{Binding Speaker.Name}"  />
+            </StackLayout>
         </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Link: " />
-          <Label Text="{Binding Speaker.Link}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Company: " />
-          <Label Text="{Binding Speaker.Company}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Tagline: " />
-          <Label Text="{Binding Speaker.Tagline}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Bio: " />
-          <Label Text="{Binding Speaker.Bio}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Facebook: " />
-          <Label Text="{Binding Speaker.Facebook}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Google Plus: " />
-          <Label Text="{Binding Speaker.GooglePlus}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Instagram: " />
-          <Label Text="{Binding Speaker.Instagram}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="LinkedIn: " />
-          <Label Text="{Binding Speaker.LinkedIn}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="RSS: " />
-          <Label Text="{Binding Speaker.Rss}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Twitter: " />
-          <Label Text="{Binding Speaker.Twitter}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="YouTube: " />
-          <Label Text="{Binding Speaker.YouTube}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Flickr: " />
-          <Label Text="{Binding Speaker.Flickr}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Github: " />
-          <Label Text="{Binding Speaker.Github}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Foursquare: " />
-          <Label Text="{Binding Speaker.Foursquare}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Pinterest: " />
-          <Label Text="{Binding Pinterest}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Dribble: " />
-          <Label Text="{Binding Speaker.Dribble}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="MySpace: " />
-          <Label Text="{Binding Speaker.MySpace}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="SlideShare: " />
-          <Label Text="{Binding Speaker.SlideShare}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Foursquare: " />
-          <Label Text="{Binding Speaker.Foursquare}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Speaker Deck: " />
-          <Label Text="{Binding SpeakerDeck}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Sound Cloud: " />
-          <Label Text="{Binding Speaker.SoundCloud}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Tumblr: " />
-          <Label Text="{Binding Speaker.Tumblr}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Stack Overflow: " />
-          <Label Text="{Binding Speaker.StackOverflow}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="About Me: " />
-          <Label Text="{Binding Speaker.AboutMe}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Branded Me: " />
-          <Label Text="{Binding Speaker.BrandedMe}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="XING: " />
-          <Label Text="{Binding Speaker.XING}" />
+		<StackLayout BackgroundColor="#8C02d2d0">
+        	<StackLayout Margin="41,9,5,9">
+				<StackLayout Orientation="Horizontal">
+							
+					<Label TextColor="#cce1e2" 
+									FontFamily="AvenirNext-Bold" 
+									FontSize="13.55" 
+									Text="Link:"  />
+					<Label TextColor="#cce1e2" 
+									FontFamily="AvenirNext-Medium" 
+									FontSize="13.55" 
+									Text="{Binding Speaker.Link}"  />
+				</StackLayout>
+				<StackLayout Orientation="Horizontal">
+							
+					<Label TextColor="#cce1e2" 
+									FontFamily="AvenirNext-Bold" 
+									FontSize="13.55" 
+									Text="Company:"  />
+					<Label TextColor="#cce1e2" 
+									FontFamily="AvenirNext-Medium" 
+									FontSize="13.55" 
+									Text="{Binding Speaker.Company}"  />
+				</StackLayout>
+                <Label TextColor="#cce1e2" 
+								FontFamily="AvenirNext-Medium" 
+								FontSize="13.55" 
+								Text="{Binding Speaker.Bio}"  />
+            </StackLayout>
+			<StackLayout Spacing="2" Orientation="Horizontal">
+        	<!--	<svg:SvgImage Svg="res:Images.YouTube" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Facebook" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Twitter" HeightRequest="32" />
+			    <svg:SvgImage Svg="res:Images.GooglePlus" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Github" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.LinkedIn" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.RSS" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.StackOverflow" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Flickr" HeightRequest="32" />  -->
+			</StackLayout>
         </StackLayout>
       </StackLayout>
     </ScrollView>
+	</Grid>
   </ContentPage.Content>
 </ContentPage>

@@ -2,11 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:helpers="clr-namespace:TechFest.Helpers;assembly=TechFest"
              x:Class="TechFest.Pages.SessionListPage"
-           >
+		     BackgroundColor="Transparent">
 	<ContentPage.Content>
    <Grid>
-    <Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
-		<ListView BackgroundColor="Transparent" ItemsSource="{Binding Sessions}"
+		<Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
+    	<ListView BackgroundColor="Transparent" ItemsSource="{Binding Sessions}"
               SelectedItem="{Binding SelectedSession}"
               IsGroupingEnabled="True"
               GroupDisplayBinding="{Binding Title}"
@@ -14,9 +14,9 @@
       <ListView.GroupHeaderTemplate>
         <DataTemplate>
           <ViewCell Height="30">
-            <StackLayout BackgroundColor="#6B027473">
+            <StackLayout BackgroundColor="{StaticResource titleBackground}">
               <StackLayout VerticalOptions="Center" Margin="21,0,5,0">
-                <Label VerticalTextAlignment="Center" BackgroundColor="Transparent" TextColor="#fdfdfd" FontFamily="AvenirNext-Bold" FontSize="19.55" Text="{Binding Title}"  />
+                <Label Style="{DynamicResource titleLabel}" Text="{Binding Title}"  />
               </StackLayout>
             </StackLayout>
           </ViewCell>
@@ -25,9 +25,9 @@
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
-            <StackLayout BackgroundColor="#8C02d2d0">
+            <StackLayout BackgroundColor="{StaticResource detailBackground}">
               <StackLayout Margin="41,9,5,9">
-                <Label TextColor="#cce1e2" FontFamily="AvenirNext-Medium" FontSize="13.55" Text="{Binding Title}"  />
+                <Label Style="{DynamicResource detailLabel}" Text="{Binding Title}"  />
             </StackLayout>
             </StackLayout>
           </ViewCell>

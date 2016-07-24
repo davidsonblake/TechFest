@@ -1,4 +1,5 @@
-﻿using FreshMvvm;
+﻿using System.Reflection;
+using FreshMvvm;
 using PropertyChanged;
 
 namespace TechFest.PageModels
@@ -11,6 +12,8 @@ namespace TechFest.PageModels
         public bool IsBusy { get; set; }
 
         public string Title { get; set; }
+
+		public Assembly Assembly => typeof(App).GetTypeInfo().Assembly;
 
         public BasePageModel(IDataService dataService)
         {

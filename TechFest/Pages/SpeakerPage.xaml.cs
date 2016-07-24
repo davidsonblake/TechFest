@@ -2,7 +2,7 @@
 
 namespace TechFest.Pages
 {
-    public partial class SpeakerPage : ContentPage
+	public partial class SpeakerPage : ContentPage
     {
         public SpeakerPage()
         {

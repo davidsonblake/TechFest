@@ -19,21 +19,21 @@ namespace TechFest
             var mainTabbedNavigation = new FreshTabbedNavigationContainer(NavigationContainerNames.MainContainer);
             mainTabbedNavigation.BarBackgroundColor = Color.FromHex("#152129");
             mainTabbedNavigation.BarTextColor = Color.FromHex("#F05A79");
-            
-            var speakers = mainTabbedNavigation.AddTab<SpeakerListPageModel>("Speakers", null) as NavigationPage;
-            speakers.Icon = ImageSource.FromResource("TechFest.Images.speaker.png", typeof(App).Assembly()) as FileImageSource;
-            
+
+			var speakers = mainTabbedNavigation.AddTab<SpeakerListPageModel>("Speakers", null) as NavigationPage;
+			speakers.BackgroundColor = Color.Black;
+
             var sessions = mainTabbedNavigation.AddTab<SessionListPageModel>("Sessions", null);
-            sessions.Icon = ImageSource.FromResource("TechFest.Images.code.png",(typeof(App).Assembly())) as FileImageSource;
-            
+			sessions.BackgroundColor = Color.Black;
+
             var sponsors = mainTabbedNavigation.AddTab<SponsorListPageModel>("Sponsors", null);
-            sponsors.Icon = ImageSource.FromResource("TechFest.Images.moneybag.png", typeof(App).Assembly()) as FileImageSource;
+			sponsors.BackgroundColor = Color.Black;
 
             var page = FreshPageModelResolver.ResolvePageModel<EventListPageModel>();
             var basicNavContainer = new FreshNavigationContainer(page, NavigationContainerNames.EventSelectionContainer);
             basicNavContainer.BarBackgroundColor = Color.FromHex("#152129");
+			basicNavContainer.BackgroundColor = Color.Aqua;
             MainPage = basicNavContainer;
-            
         }
 
         private void RegisterIoc()
