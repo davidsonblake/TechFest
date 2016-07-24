@@ -1,73 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		     xmlns:helpers="clr-namespace:TechFest.Helpers;assembly=TechFest"
              x:Class="TechFest.Pages.SponsorPage">
-  <ScrollView>
-    <StackLayout>
-      <StackLayout Orientation="Horizontal">
-          <Label  Text="Name: " />
-          <Label Text="{Binding Sponsor.Name}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Link: " />
-          <Label Text="{Binding Sponsor.Link}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Sponsorship Level: " />
-          <Label Text="{Binding Sponsor.SponsorshipLevel}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Alt: " />
-          <Label Text="{Binding Sponsor.Alt}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Description: " />
-          <Label Text="{Binding Sponsor.Description}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Facebook: " />
-          <Label Text="{Binding Sponsor.Facebook}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Instagram: " />
-          <Label Text="{Binding Sponsor.Instagram}" />
-        </StackLayout>
-         <StackLayout Orientation="Horizontal">
-          <Label  Text="LinkedIn: " />
-          <Label Text="{Binding Sponsor.LinkedIn}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Twitter: " />
-          <Label Text="{Binding Sponsor.Twitter}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="YouTube: " />
-          <Label Text="{Binding Sponsor.YouTube}" />
-        </StackLayout>
-         <StackLayout Orientation="Horizontal">
-          <Label  Text="RSS: " />
-          <Label Text="{Binding Sponsor.Rss}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Google Plus: " />
-          <Label Text="{Binding Sponsor.GooglePlus}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Flickr: " />
-          <Label Text="{Binding Sponsor.Flickr}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Github: " />
-          <Label Text="{Binding Sponsor.Github}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Pinterest: " />
-          <Label Text="{Binding Pinterest}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-          <Label  Text="Stack Overflow: " />
-          <Label Text="{Binding Sponsor.StackOverflow}" />
-        </StackLayout>
-    </StackLayout>
-  </ScrollView>
+ 	<Grid>
+		<Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
+  		<ScrollView > 
+    		<StackLayout Spacing="0" Margin="0,40,0,0" >
+    			<StackLayout BackgroundColor="{StaticResource titleBackground}">
+        			<StackLayout VerticalOptions="Center" Margin="21,0,5,0">
+            			<Label Style="{DynamicResource titleLabel}" Text="{Binding Sponsor.Name}"  />
+            		</StackLayout>
+        		</StackLayout>
+	    		<StackLayout BackgroundColor="{StaticResource detailBackground}">
+					<StackLayout Margin="41,9,5,9" >
+        			<StackLayout Orientation="Horizontal" >
+                		<Label Style="{DynamicResource detailLabel}" FontAttributes="Bold" Text="Link:" />
+						<Label Style="{DynamicResource detailLabel}" Text="{Binding Sponsor.Link}" />
+            		</StackLayout>
+		    		<StackLayout Orientation="Horizontal" >
+                		<Label Style="{DynamicResource detailLabel}" FontAttributes="Bold" Text="Sponsorship Level:" />
+						<Label Style="{DynamicResource detailLabel}" Text="{Binding Sponsor.SponsorshipLevel}" />
+            		</StackLayout>
+        			<StackLayout Orientation="Horizontal" >
+						<Label Style="{DynamicResource detailLabel}" Text="{Binding Sponsor.Description}" />
+            		</StackLayout>
+					</StackLayout>
+    			</StackLayout>
+    		</StackLayout>
+  		</ScrollView>
+	</Grid>
 </ContentPage>

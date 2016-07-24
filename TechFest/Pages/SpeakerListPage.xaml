@@ -32,12 +32,12 @@
 										<fftransformations:RoundedTransformation />
 									</ffimageloading:CachedImage.Transformations>
 								</ffimageloading:CachedImage>
-                    		<Label HorizontalOptions="Start" TextColor="White" FontAttributes="Bold" Text="{Binding Speaker1.Name}" />
-                    		<Label HorizontalOptions="Start" LineBreakMode="TailTruncation" TextColor="Aqua" Text="{Binding Speaker1.Company}" />
+                    		<Label HorizontalOptions="Start" Style="{DynamicResource detailLabel}" Text="{Binding Speaker1.Name}" />
+                    		<Label HorizontalOptions="Start" Style="{DynamicResource detailLabel}"  LineBreakMode="TailTruncation" TextColor="Aqua" Text="{Binding Speaker1.Company}" />
                   		</StackLayout>
                   		<StackLayout Margin="5" Spacing="0" Grid.Column="1" HorizontalOptions="Center">
 							<StackLayout.GestureRecognizers>
-								<TapGestureRecognizer Command="{Binding Speaker1Selected}" />
+								<TapGestureRecognizer Command="{Binding Speaker2Selected}" />
 							</StackLayout.GestureRecognizers>
 							<ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
 											WidthRequest="170" HeightRequest="170" 
@@ -47,8 +47,8 @@
 										<fftransformations:RoundedTransformation />
 									</ffimageloading:CachedImage.Transformations>
 								</ffimageloading:CachedImage>
-                    		<Label HorizontalOptions="Start" TextColor="White" FontAttributes="Bold" Text="{Binding Speaker2.Name}" />
-                    		<Label HorizontalOptions="Start" LineBreakMode="TailTruncation" TextColor="Aqua" Text="{Binding Speaker2.Company}" />
+                    		<Label HorizontalOptions="Start" Style="{DynamicResource detailLabel}" Text="{Binding Speaker2.Name}" />
+                    		<Label HorizontalOptions="Start" Style="{DynamicResource detailLabel}"  LineBreakMode="TailTruncation" TextColor="Aqua" Text="{Binding Speaker2.Company}" />
                   		</StackLayout>
                 		</Grid>
               		</ViewCell>

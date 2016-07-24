@@ -106,7 +106,7 @@
     <OptimizePNGs>True</OptimizePNGs>
     <BuildIpa>True</BuildIpa>
     <IpaIncludeArtwork>False</IpaIncludeArtwork>
-    <CodesignProvision>0573a950-e495-4298-9e80-08a638fef1a7</CodesignProvision>
+    <CodesignProvision>be6e69ec-b59d-4223-81dd-8a07e8ff3555</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Akavache, Version=4.1.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -260,7 +260,8 @@
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="TransparentViewCellRenderer.cs" />
+    <Compile Include="Renderers\TransparentViewCellRenderer.cs" />
+    <Compile Include="Renderers\HtmlLabelRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default%402x.png" />
@@ -279,6 +280,9 @@
       <Version>4.1.0.2</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Renderers\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

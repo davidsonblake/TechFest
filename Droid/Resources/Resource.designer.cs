@@ -149,7 +149,6 @@ namespace TechFest.Droid
 			global::ModernHttpClient.Resource.String.library_name = global::TechFest.Droid.Resource.String.library_name;
 			global::Splat.Resource.String.library_name = global::TechFest.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::TechFest.Droid.Resource.Attribute.actionBarSize;
-			global::NGraphics.Android.Custom.Resource.String.library_name = global::TechFest.Droid.Resource.String.library_name;
 		}
 		
 		public partial class Animation
