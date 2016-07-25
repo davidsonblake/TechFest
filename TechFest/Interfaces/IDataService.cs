@@ -6,6 +6,8 @@ namespace TechFest
 {
     public interface IDataService
     {
+		string BaseUrl { get; }
+		
         void SetBaseUrl(string baseUrl);
 
         Task<List<Event>> GetCurrentEventsAsync();

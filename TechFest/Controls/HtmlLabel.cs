@@ -1,8 +1,0 @@
-﻿using Xamarin.Forms;
-
-namespace TechFest
-{
-    public class HtmlLabel : Label
-    {
-    }
-}

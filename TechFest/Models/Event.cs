@@ -26,6 +26,8 @@ namespace TechFest.Models
         [XmlElement(ElementName = "LastModified")]
         public string LastModified { get; set; }
 
+		public bool IsCurrent { get; set;}
+
         public string Title { get; set; }
     }
 }

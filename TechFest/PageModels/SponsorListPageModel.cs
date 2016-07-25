@@ -32,6 +32,10 @@ namespace TechFest.PageModels
         public SponsorListPageModel(IDataService dataService)
             : base(dataService)
         {
+			MessagingCenter.Subscribe<EventListPageModel>(this, "Reload", async (obj) => {
+				await CoreMethods.PopToRoot(false);
+				await LoadSponsors();
+			});
         }
 
         protected override async void ViewIsAppearing(object sender, EventArgs e)
@@ -46,6 +50,8 @@ namespace TechFest.PageModels
         {
             try
             {
+				Sponsors = new List<SponsorList>();
+
                 var sponsors = (await DataService.GetSponsersAsync()).GroupBy(x => x.SponsorshipLevel).Select(s => new { Key = s.Key, Sponsors = s.ToList() }).ToList();
                 var groupedSponsors = new List<SponsorList>();
 

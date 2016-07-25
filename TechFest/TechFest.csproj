@@ -59,7 +59,6 @@
     <Compile Include="Helpers\ImageResourceExtension.cs" />
     <Compile Include="Models\SpeakerPair.cs" />
     <Compile Include="PageModels\EventListPageModel.cs" />
-    <Compile Include="PageModels\FeedPageModel.cs" />
     <Compile Include="PageModels\SessionPageModel.cs" />
     <Compile Include="PageModels\SpeakerPageModel.cs" />
     <Compile Include="PageModels\SponsorPageModel.cs" />
@@ -138,7 +137,6 @@
     <Compile Include="Models\Sponsor.cs" />
     <Compile Include="Models\Track.cs" />
     <Compile Include="Helpers\Extensions.cs" />
-    <Compile Include="Controls\HtmlLabel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Akavache, Version=4.1.2.0, Culture=neutral, processorArchitecture=MSIL">

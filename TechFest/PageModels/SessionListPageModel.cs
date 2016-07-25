@@ -11,9 +11,13 @@ namespace TechFest.PageModels
     {
         public List<SessionList> Sessions { get; set; }
 
-        public SessionListPageModel(IDataService dataService)
-            : base(dataService)
-        {
+		public SessionListPageModel(IDataService dataService)
+			: base(dataService)
+		{
+			MessagingCenter.Subscribe<EventListPageModel>(this, "Reload", async (obj) => {
+				await CoreMethods.PopToRoot(false);
+				await LoadSessions();
+			});
         }
 
         public Command<Session> SessionSelected => new Command<Session>(HandleSessionSelected);
@@ -30,6 +34,10 @@ namespace TechFest.PageModels
         {
             try
             {
+				IsBusy = true;
+
+				Sessions = new List<SessionList>();
+
                 var sessions = (await DataService.GetSessionsAsync()).GroupBy(x => x.Track).Select(s => new { Key = s.Key, Sessions = s.ToList() }).ToList();
                 var groupedSessions = new List<SessionList>();
 
@@ -42,8 +50,11 @@ namespace TechFest.PageModels
             }
             catch (Exception ex)
             {
+				IsBusy = false;
                 await CoreMethods.DisplayAlert("Whoops!", ex.Message, "Ok");
             }
+
+			IsBusy = false;
         }
 
         private void HandleSessionSelected(Session session)

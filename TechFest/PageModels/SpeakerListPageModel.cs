@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TechFest.Models;
+using Xamarin.Forms;
 
 namespace TechFest.PageModels
 {
@@ -13,6 +14,10 @@ namespace TechFest.PageModels
         public SpeakerListPageModel(IDataService dataService)
             : base(dataService)
         {
+			MessagingCenter.Subscribe<EventListPageModel>(this, "Reload", async (obj) => {
+				await CoreMethods.PopToRoot(false);
+				await LoadSpeakers();
+			});
         }
 
         protected override async void ViewIsAppearing(object sender, EventArgs e)
@@ -28,6 +33,8 @@ namespace TechFest.PageModels
             try
             {
                 IsBusy = true;
+
+				Speakers = new List<SpeakerPair>();
 
                 var speakers = await DataService.GetSpeakersAsync();
                 var pairs = new List<SpeakerPair>();

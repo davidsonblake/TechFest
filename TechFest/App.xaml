@@ -4,6 +4,7 @@
 		<ResourceDictionary>
 			<Color x:Key="titleBackground">#6B027473</Color>
 			<Color x:Key="detailBackground">#8C02d2d0</Color>
+			<Color x:Key="darkGray">#152129</Color>
 
 			<Style x:Key="titleLabel" TargetType="Label">
 				<Setter Property="TextColor" Value="#fdfdfd" />

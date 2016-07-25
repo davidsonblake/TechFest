@@ -1,5 +1,6 @@
 ﻿using FreshMvvm;
 using TechFest.PageModels;
+using TechFest.Pages;
 using TechFest.Services;
 using Xamarin.Forms;
 
@@ -32,13 +33,19 @@ namespace TechFest
 			var page = FreshPageModelResolver.ResolvePageModel<EventListPageModel>();
 			var eventPage = FreshPageModelResolver.ResolvePageModel<EventListPageModel>();
 
+			((EventListPage)eventPage).HideBackgroundImage();
+
 			mainMasterDetail.Master = eventPage;
 			mainMasterDetail.Detail = mainTabbedNavigation;
 
             var basicNavContainer = new FreshNavigationContainer(page, NavigationContainerNames.EventSelectionContainer);
             basicNavContainer.BarBackgroundColor = Color.FromHex("#152129");
 
+			NavigationPage.SetHasNavigationBar(page, false);
+
             MainPage = basicNavContainer;
+
+			MessagingCenter.Subscribe<EventListPageModel>(this, "Reload", (obj) => { if (mainMasterDetail.IsPresented) mainMasterDetail.IsPresented = false; });
         }
 
         private void RegisterIoc()

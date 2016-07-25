@@ -16,6 +16,9 @@ namespace TechFest.Services
     {
         private string _baseUrl;
         private readonly FeedParser _parser = new FeedParser();
+		private string _originalBaseUrl;
+
+		public string BaseUrl => _originalBaseUrl;
 
         public async Task<List<Event>> GetCurrentEventsAsync()
         {
@@ -29,6 +32,7 @@ namespace TechFest.Services
                 for (int i = 0; i < events.Count(); i++)
                 {
                     events[i].Title = rssItems[i].Title.Text;
+					events[i].IsCurrent = true;
                 }
 
                 return events;
@@ -47,6 +51,7 @@ namespace TechFest.Services
                 for (int i = 0; i < events.Count(); i++)
                 {
                     events[i].Title = rssItems[i].Title.Text;
+					events[i].IsCurrent = false;
                 }
 
                 return events;
@@ -139,6 +144,8 @@ namespace TechFest.Services
 
         public void SetBaseUrl(string baseUrl)
         {
+			_originalBaseUrl = baseUrl;
+			
             if (!string.IsNullOrEmpty(baseUrl) && baseUrl.EndsWith("/", StringComparison.CurrentCulture))
                 baseUrl = baseUrl.Remove(baseUrl.LastIndexOf("/", StringComparison.CurrentCulture));
 

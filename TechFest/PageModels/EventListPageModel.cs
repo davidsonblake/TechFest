@@ -9,23 +9,7 @@ namespace TechFest.PageModels
 {
     public class EventListPageModel : BasePageModel
     {
-        public List<Event> Events { get; set; }
-
-        private Event _selectedEvent;
-
-        public Event SelectedEvent
-        {
-            get
-            {
-                return _selectedEvent;
-            }
-            set
-            {
-                _selectedEvent = value;
-                if (value != null)
-                    EventSelected.Execute(value);
-            }
-        }
+        public List<EventList> Events { get; set; }
 
         public EventListPageModel(IDataService dataService) :
             base(dataService)
@@ -48,12 +32,14 @@ namespace TechFest.PageModels
 
             try
             {
-                var events = await DataService.GetCurrentEventsAsync();
-                events.AddRange(await DataService.GetPreviousEventsAsync());
-                Events = events;
+				var currentEvents = new EventList("Current", await DataService.GetCurrentEventsAsync());
+				var previous = new EventList("Past", await DataService.GetPreviousEventsAsync());
+
+				Events = new List<EventList> { currentEvents, previous };
             }
             catch (Exception ex)
             {
+				IsBusy = false;
                 var msg = ex.Message;
                 await CoreMethods.DisplayAlert("Whoops!", "There was a problem getting the events. Please try again " + msg, "Ok");
             }
@@ -65,9 +51,18 @@ namespace TechFest.PageModels
         {
             if (evnt.Hosted.ToLower() == "yes")
             {
+				if (DataService.BaseUrl == evnt.Url)
+					return;
+
                 DataService.SetBaseUrl(evnt.Url);
 
-				CoreMethods.SwitchOutRootNavigation(NavigationContainerNames.MainContainer);
+				if (CurrentNavigationServiceName != Constants.DefaultNavigationServiceName) {
+
+					CoreMethods.SwitchOutRootNavigation(NavigationContainerNames.MainContainer);
+				} else {
+					
+					MessagingCenter.Send(this, "Reload");
+				}
             }
             else
             {
@@ -75,4 +70,15 @@ namespace TechFest.PageModels
             }
         }
     }
+
+	public class EventList : List<Event>
+	{
+		public string Title { get; set; }
+
+		public EventList(string title, List<Event> events)
+		{
+			Title = title;
+			this.AddRange(events);
+		}
+	}
 }
