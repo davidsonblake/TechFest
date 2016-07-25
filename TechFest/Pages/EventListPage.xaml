@@ -14,6 +14,9 @@
 			  ItemsSource="{Binding Events}"
               IsGroupingEnabled="True"
               GroupDisplayBinding="{Binding Title}"
+			  RefreshCommand="{Binding RefreshCommand}"
+			  Refreshing="Handle_Refreshing"
+			  IsPullToRefreshEnabled="true"
               HasUnevenRows="True">
       <ListView.GroupHeaderTemplate>
         <DataTemplate>
@@ -37,7 +40,12 @@
           </ViewCell>
         </DataTemplate>
       </ListView.ItemTemplate>
+	  <ListView.Footer>
+		<Label Text="" />
+    </ListView.Footer>
       </ListView>
+	  <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"
+            VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
    </Grid>
 	</ContentPage.Content>
 </ContentPage>

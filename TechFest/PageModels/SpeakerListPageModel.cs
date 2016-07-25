@@ -20,6 +20,8 @@ namespace TechFest.PageModels
 			});
         }
 
+		public Command RefreshCommand => new Command(async () => await LoadSpeakers(true));
+
         protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
             if (!HasAppeared)
@@ -28,7 +30,7 @@ namespace TechFest.PageModels
             base.ViewIsAppearing(sender, e);
         }
 
-        private async Task LoadSpeakers()
+        private async Task LoadSpeakers(bool invalidate = false)
         {
             try
             {
@@ -36,7 +38,7 @@ namespace TechFest.PageModels
 
 				Speakers = new List<SpeakerPair>();
 
-                var speakers = await DataService.GetSpeakersAsync();
+                var speakers = await DataService.GetSpeakersAsync(invalidate);
                 var pairs = new List<SpeakerPair>();
                 if (speakers != null)
                 {

@@ -8,5 +8,18 @@ namespace TechFest.Pages
         {
             InitializeComponent();
         }
-    }
+
+		void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+		{
+			if (e.SelectedItem == null)
+				return;
+
+			lstSpeakers.SelectedItem = null;
+		}
+
+		void Handle_Refreshing(object sender, System.EventArgs e)
+		{
+			lstSpeakers.IsRefreshing = false;
+		}
+	}
 }

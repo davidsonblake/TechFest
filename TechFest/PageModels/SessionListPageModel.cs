@@ -21,6 +21,7 @@ namespace TechFest.PageModels
         }
 
         public Command<Session> SessionSelected => new Command<Session>(HandleSessionSelected);
+		public Command RefreshCommand => new Command(async () => await LoadSessions(true));
 
         protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
@@ -30,7 +31,7 @@ namespace TechFest.PageModels
             base.ViewIsAppearing(sender, e);
         }
 
-        private async Task LoadSessions()
+        private async Task LoadSessions(bool invalidate = false)
         {
             try
             {
@@ -38,7 +39,7 @@ namespace TechFest.PageModels
 
 				Sessions = new List<SessionList>();
 
-                var sessions = (await DataService.GetSessionsAsync()).GroupBy(x => x.Track).Select(s => new { Key = s.Key, Sessions = s.ToList() }).ToList();
+                var sessions = (await DataService.GetSessionsAsync(invalidate)).GroupBy(x => x.Track).Select(s => new { Key = s.Key, Sessions = s.ToList() }).ToList();
                 var groupedSessions = new List<SessionList>();
 
                 foreach (var session in sessions)

@@ -20,6 +20,8 @@ namespace TechFest.Services
 
 		public string BaseUrl => _originalBaseUrl;
 
+		private const int CacheMinutes = 15;
+
         public async Task<List<Event>> GetCurrentEventsAsync()
         {
             var url = "http://techfests.com/_layouts/powerrss.aspx?list=events&options=filter=current";
@@ -58,12 +60,15 @@ namespace TechFest.Services
             }, DateTimeOffset.Now.AddDays(1));
         }
 
-        public async Task<List<Session>> GetSessionsAsync()
+        public async Task<List<Session>> GetSessionsAsync(bool invalidate = false)
         {
             if (string.IsNullOrEmpty(_baseUrl))
                 return default(List<Session>);
 
             var url = $"{_baseUrl}/_layouts/powerrss.aspx?list=Sessions";
+
+			if (invalidate)
+				await BlobCache.LocalMachine.InvalidateObject<List<Session>>(url);
 
             return await BlobCache.LocalMachine.GetOrFetchObject(url, async () =>
             {
@@ -76,15 +81,18 @@ namespace TechFest.Services
                 }
 
                 return sessions;
-            }, DateTimeOffset.Now.AddDays(1));
+            }, DateTimeOffset.Now.AddMinutes(CacheMinutes));
         }
 
-        public async Task<List<Speaker>> GetSpeakersAsync()
+        public async Task<List<Speaker>> GetSpeakersAsync(bool invalidate = false)
         {
             if (string.IsNullOrEmpty(_baseUrl))
                 return default(List<Speaker>);
 
             var url = $"{_baseUrl}/_layouts/powerrss.aspx?list=Speakers";
+
+			if (invalidate)
+				await BlobCache.LocalMachine.InvalidateObject<List<Speaker>>(url);
 
             return await BlobCache.LocalMachine.GetOrFetchObject(url, async () =>
             {
@@ -97,15 +105,18 @@ namespace TechFest.Services
                 }
 
                 return speakers;
-            }, DateTimeOffset.Now.AddDays(1));
+            }, DateTimeOffset.Now.AddMinutes(CacheMinutes));
         }
 
-        public async Task<List<Sponsor>> GetSponsersAsync()
+        public async Task<List<Sponsor>> GetSponsersAsync(bool invalidate = false)
         {
             if (string.IsNullOrEmpty(_baseUrl))
                 return default(List<Sponsor>);
 
             var url = $"{_baseUrl}/_layouts/powerrss.aspx?list=Sponsors";
+
+			if (invalidate)
+				await BlobCache.LocalMachine.InvalidateObject<List<Sponsor>>(url);
 
             return await BlobCache.LocalMachine.GetOrFetchObject(url, async () =>
             {
@@ -118,15 +129,18 @@ namespace TechFest.Services
                 }
 
                 return sponsors;
-            }, DateTimeOffset.Now.AddDays(1));
+            }, DateTimeOffset.Now.AddMinutes(CacheMinutes));
         }
 
-        public async Task<List<Track>> GetTracksAsync()
+        public async Task<List<Track>> GetTracksAsync(bool invalidate = false)
         {
             if (string.IsNullOrEmpty(_baseUrl))
                 return default(List<Track>);
 
             var url = $"{_baseUrl}/_layouts/powerrss.aspx?list=Tracks";
+
+			if (invalidate)
+				await BlobCache.LocalMachine.InvalidateObject<List<Track>>(url);
 
             return await BlobCache.LocalMachine.GetOrFetchObject(url, async () =>
             {
@@ -139,7 +153,7 @@ namespace TechFest.Services
                 }
 
                 return tracks;
-            }, DateTimeOffset.Now.AddDays(1));
+			}, DateTimeOffset.Now.AddMinutes(CacheMinutes));
         }
 
         public void SetBaseUrl(string baseUrl)

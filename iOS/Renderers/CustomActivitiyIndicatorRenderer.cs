@@ -1,6 +1,9 @@
 ﻿using BigTed;
+using TechFest.iOS;
+using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
+[assembly: ExportRenderer(typeof(ActivityIndicator), typeof(CustomActivitiyIndicatorRenderer))]
 namespace TechFest.iOS
 {
     public class CustomActivitiyIndicatorRenderer : ActivityIndicatorRenderer
@@ -15,7 +18,7 @@ namespace TechFest.iOS
             {
                 if (this.Element.IsRunning)
                 {
-                    BTProgressHUD.Show(maskType: ProgressHUD.MaskType.Gradient);
+					BTProgressHUD.Show(maskType: ProgressHUD.MaskType.Gradient);
                 }
                 else
                 {

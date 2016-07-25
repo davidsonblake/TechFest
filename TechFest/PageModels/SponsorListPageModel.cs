@@ -28,6 +28,7 @@ namespace TechFest.PageModels
         }
 
         public Command<Sponsor> SponsorSelected => new Command<Sponsor>(HandleSponsorSelected);
+		public Command RefreshCommand => new Command(async () => await LoadSponsors(true));
 
         public SponsorListPageModel(IDataService dataService)
             : base(dataService)
@@ -46,13 +47,15 @@ namespace TechFest.PageModels
             base.ViewIsAppearing(sender, e);
         }
 
-        private async Task LoadSponsors()
+        private async Task LoadSponsors(bool invalidate = false)
         {
             try
             {
+				IsBusy = true;
+				
 				Sponsors = new List<SponsorList>();
 
-                var sponsors = (await DataService.GetSponsersAsync()).GroupBy(x => x.SponsorshipLevel).Select(s => new { Key = s.Key, Sponsors = s.ToList() }).ToList();
+                var sponsors = (await DataService.GetSponsersAsync(invalidate)).GroupBy(x => x.SponsorshipLevel).Select(s => new { Key = s.Key, Sponsors = s.ToList() }).ToList();
                 var groupedSponsors = new List<SponsorList>();
 
                 foreach (var sponsor in sponsors)
@@ -64,8 +67,11 @@ namespace TechFest.PageModels
             }
             catch (Exception ex)
             {
+				IsBusy = false;
                 await CoreMethods.DisplayAlert("Whoops!", ex.Message, "Ok");
             }
+
+			IsBusy = false;
         }
 
         private void HandleSponsorSelected(Sponsor sponsor)

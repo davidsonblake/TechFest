@@ -20,6 +20,11 @@ namespace TechFest.Pages
 			((EventListPageModel)BindingContext).EventSelected.Execute(e.SelectedItem);
 		}
 
+		void Handle_Refreshing(object sender, System.EventArgs e)
+		{
+			lstEvents.IsRefreshing = false;
+		}
+
 		public void HideBackgroundImage()
 		{
 			imgMain.IsVisible = false;

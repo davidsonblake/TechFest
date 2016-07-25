@@ -10,6 +10,9 @@
     		  ItemSelected="Handle_ItemSelected"
 			  BackgroundColor="Transparent" ItemsSource="{Binding Sessions}"
               IsGroupingEnabled="True"
+			  RefreshCommand="{Binding RefreshCommand}"
+			  IsPullToRefreshEnabled="True"
+			  Refreshing="Handle_Refreshing"
               GroupDisplayBinding="{Binding Title}"
               HasUnevenRows="True">
       <ListView.GroupHeaderTemplate>
@@ -34,7 +37,12 @@
           </ViewCell>
         </DataTemplate>
       </ListView.ItemTemplate>
+	  <ListView.Footer>
+		<Label Text="" />
+    </ListView.Footer>
       </ListView>
+	  <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"
+            VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
    </Grid>
 	</ContentPage.Content>
 </ContentPage>

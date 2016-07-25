@@ -18,5 +18,10 @@ namespace TechFest.Pages
             lstSessions.SelectedItem = null;
             ((SessionListPageModel)BindingContext).SessionSelected.Execute(e.SelectedItem);
         }
-    }
+
+		void Handle_Refreshing(object sender, System.EventArgs e)
+		{
+			lstSessions.IsRefreshing = false;
+		}
+	}
 }

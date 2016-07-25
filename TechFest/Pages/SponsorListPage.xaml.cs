@@ -18,5 +18,10 @@ namespace TechFest.Pages
             lstSponsors.SelectedItem = null;
             ((SponsorListPageModel)this.BindingContext).SponsorSelected.Execute(e.SelectedItem);
         }
-    }
+
+		void Handle_Refreshing(object sender, System.EventArgs e)
+		{
+			lstSponsors.IsRefreshing = false;
+		}
+	}
 }

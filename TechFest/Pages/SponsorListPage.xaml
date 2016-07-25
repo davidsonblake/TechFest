@@ -7,10 +7,13 @@
    <Grid>
 		<Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
     	<ListView x:Name="lstSponsors"
-					BackgroundColor="Transparent" ItemsSource="{Binding Sponsors}"
+			  BackgroundColor="Transparent" ItemsSource="{Binding Sponsors}"
               IsGroupingEnabled="True"
               GroupDisplayBinding="{Binding Title}"
 			  ItemSelected="Handle_ItemSelected"
+			  Refreshing="Handle_Refreshing"
+			  RefreshCommand="{Binding RefreshCommand}"
+			  IsPullToRefreshEnabled="True"
               HasUnevenRows="True">
       <ListView.GroupHeaderTemplate>
         <DataTemplate>
@@ -34,7 +37,12 @@
           </ViewCell>
         </DataTemplate>
       </ListView.ItemTemplate>
+	  <ListView.Footer>
+		<Label Text="" />
+    </ListView.Footer>
       </ListView>
+	  <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"
+            VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
    </Grid>
 	</ContentPage.Content>
 </ContentPage>

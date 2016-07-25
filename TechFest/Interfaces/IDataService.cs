@@ -14,12 +14,12 @@ namespace TechFest
 
         Task<List<Event>> GetPreviousEventsAsync();
 
-        Task<List<Session>> GetSessionsAsync();
+        Task<List<Session>> GetSessionsAsync(bool invalidate = false);
 
-        Task<List<Speaker>> GetSpeakersAsync();
+        Task<List<Speaker>> GetSpeakersAsync(bool invalidate = false);
 
-        Task<List<Sponsor>> GetSponsersAsync();
+        Task<List<Sponsor>> GetSponsersAsync(bool invalidate = false);
 
-        Task<List<Track>> GetTracksAsync();
+        Task<List<Track>> GetTracksAsync(bool invalidate = false);
     }
 }

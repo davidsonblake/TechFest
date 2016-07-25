@@ -8,9 +8,14 @@
 	<ContentPage.Content>
     <Grid BackgroundColor="Transparent">
 		 <Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
-    	<ListView ItemsSource="{Binding Speakers}"
+    	<ListView x:Name="lstSpeakers" 
+			  ItemsSource="{Binding Speakers}"
               BackgroundColor="Transparent"
               HasUnevenRows="True"
+			  RefreshCommand="{Binding RefreshCommand}"
+			  Refreshing ="Handle_Refreshing"
+			  ItemSelected="Handle_ItemSelected"
+			  IsPullToRefreshEnabled="True"
               SeparatorVisibility="None">
     		<ListView.ItemTemplate>
       			<DataTemplate>
@@ -54,7 +59,12 @@
               		</ViewCell>
       			</DataTemplate>
     		</ListView.ItemTemplate>
-  		</ListView>
+	  <ListView.Footer>
+		<Label Text="" />
+    </ListView.Footer>
+      </ListView>
+	  <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"
+            VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
       </Grid>
 	</ContentPage.Content>
 </ContentPage>

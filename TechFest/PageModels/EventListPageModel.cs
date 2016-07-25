@@ -17,6 +17,7 @@ namespace TechFest.PageModels
         }
 
         public Command<Event> EventSelected => new Command<Event>(HandleEventSelected);
+		public Command RefreshCommand => new Command(async () => await LoadEvents());
 
         protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
@@ -32,6 +33,8 @@ namespace TechFest.PageModels
 
             try
             {
+				Events = new List<EventList>();
+
 				var currentEvents = new EventList("Current", await DataService.GetCurrentEventsAsync());
 				var previous = new EventList("Past", await DataService.GetPreviousEventsAsync());
 
