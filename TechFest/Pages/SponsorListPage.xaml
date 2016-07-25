@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 		xmlns:helpers="clr-namespace:TechFest.Helpers;assembly=TechFest"
 		x:Class="TechFest.Pages.SponsorListPage">
 	<ContentPage.Content>
    <Grid>
 		<Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
-    	<ListView x:Name="lstSponsors" 
+    	<ListView x:Name="lstSponsors"
 					BackgroundColor="Transparent" ItemsSource="{Binding Sponsors}"
               IsGroupingEnabled="True"
               GroupDisplayBinding="{Binding Title}"
@@ -17,7 +17,7 @@
           <ViewCell Height="30">
             <StackLayout BackgroundColor="{StaticResource titleBackground}">
               <StackLayout VerticalOptions="Center" Margin="21,0,5,0">
-                <Label Style="{DynamicResource titleLabel}" Text="{Binding Title}"  />
+                <Label Style="{DynamicResource titleLabel}" Text="{Binding Title}" />
               </StackLayout>
             </StackLayout>
           </ViewCell>
@@ -28,7 +28,7 @@
           <ViewCell>
             <StackLayout BackgroundColor="{StaticResource detailBackground}">
               <StackLayout Margin="41,9,5,9">
-                <Label Style="{DynamicResource detailLabel}" Text="{Binding Name}"  />
+                <Label Style="{DynamicResource detailLabel}" Text="{Binding Name}" />
             </StackLayout>
             </StackLayout>
           </ViewCell>

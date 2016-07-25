@@ -17,7 +17,7 @@
 				<Setter Property="TextColor" Value="#cce1e2" />
 				<Setter Property="VerticalTextAlignment" Value="Center" />
 				<Setter Property="BackgroundColor" Value="Transparent" />
-				<Setter Property="FontFamily" Value="AvenirNext-Medium"  />
+				<Setter Property="FontFamily" Value="AvenirNext-Medium" />
 				<Setter Property="FontSize" Value="13.55" />
 			</Style>
 		</ResourceDictionary>

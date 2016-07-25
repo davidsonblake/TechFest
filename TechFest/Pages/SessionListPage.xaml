@@ -17,7 +17,7 @@
           <ViewCell Height="30">
             <StackLayout BackgroundColor="{StaticResource titleBackground}">
               <StackLayout VerticalOptions="Center" Margin="21,0,5,0">
-                <Label Style="{DynamicResource titleLabel}" Text="{Binding Title}"  />
+                <Label Style="{DynamicResource titleLabel}" Text="{Binding Title}" />
               </StackLayout>
             </StackLayout>
           </ViewCell>
@@ -28,7 +28,7 @@
           <ViewCell>
             <StackLayout BackgroundColor="{StaticResource detailBackground}">
               <StackLayout Margin="41,9,5,9">
-                <Label Style="{DynamicResource detailLabel}" Text="{Binding Title}"  />
+                <Label Style="{DynamicResource detailLabel}" Text="{Binding Title}" />
             </StackLayout>
             </StackLayout>
           </ViewCell>

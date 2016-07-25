@@ -20,35 +20,37 @@ namespace TechFest.PageModels
 
         protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
-			if (!HasAppeared)
-				await LoadSessions();
+            if (!HasAppeared)
+                await LoadSessions();
 
-			base.ViewIsAppearing(sender, e);
-		}
+            base.ViewIsAppearing(sender, e);
+        }
 
-		private async Task LoadSessions()
-		{
-			try {
-				var sessions = (await DataService.GetSessionsAsync()).GroupBy(x => x.Track).Select(s => new { Key = s.Key, Sessions = s.ToList() }).ToList();
-				var groupedSessions = new List<SessionList>();
+        private async Task LoadSessions()
+        {
+            try
+            {
+                var sessions = (await DataService.GetSessionsAsync()).GroupBy(x => x.Track).Select(s => new { Key = s.Key, Sessions = s.ToList() }).ToList();
+                var groupedSessions = new List<SessionList>();
 
-				foreach (var session in sessions) {
-					groupedSessions.Add(new SessionList(session.Key, session.Sessions));
-				}
+                foreach (var session in sessions)
+                {
+                    groupedSessions.Add(new SessionList(session.Key, session.Sessions));
+                }
 
-				Sessions = groupedSessions;
-			} catch (Exception ex) {
-				await CoreMethods.DisplayAlert("Whoops!", ex.Message, "Ok");
-			}
-		}
+                Sessions = groupedSessions;
+            }
+            catch (Exception ex)
+            {
+                await CoreMethods.DisplayAlert("Whoops!", ex.Message, "Ok");
+            }
+        }
 
         private void HandleSessionSelected(Session session)
         {
             CoreMethods.PushPageModel<SessionPageModel>(session);
         }
     }
-
-
 
     public class SessionList : List<Session>
     {

@@ -10,13 +10,13 @@ namespace TechFest.Pages
             InitializeComponent();
         }
 
-		void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
-		{
-			if (e.SelectedItem == null)
-				return;
+        private void Handle_ItemSelected(object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem == null)
+                return;
 
-			lstSponsors.SelectedItem = null;
-			((SponsorListPageModel)this.BindingContext).SponsorSelected.Execute(e.SelectedItem);
-		}
-	}
+            lstSponsors.SelectedItem = null;
+            ((SponsorListPageModel)this.BindingContext).SponsorSelected.Execute(e.SelectedItem);
+        }
+    }
 }

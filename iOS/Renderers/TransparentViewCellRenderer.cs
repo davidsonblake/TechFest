@@ -4,13 +4,13 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(ViewCell), typeof(TransparentViewCellRenderer))]
+
 namespace TechFest.iOS
 {
     public class TransparentViewCellRenderer : ViewCellRenderer
     {
         public TransparentViewCellRenderer()
         {
-
         }
 
         public override UITableViewCell GetCell(Cell item, UITableViewCell reusableCell, UITableView tv)
@@ -29,10 +29,8 @@ namespace TechFest.iOS
 
                 tv.CellLayoutMarginsFollowReadableWidth = false;
             }
-        
 
             return cell;
         }
-
     }
 }

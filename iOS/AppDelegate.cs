@@ -13,11 +13,11 @@ namespace TechFest.iOS
             var manager = BITHockeyManager.SharedHockeyManager;
             manager.Configure("5f4db5c730f145a9bc432f40e9f67798");
             manager.StartManager();
-			FFImageLoading.Forms.Touch.CachedImageRenderer.Init();
-			var ignore = new CircleTransformation();
+            FFImageLoading.Forms.Touch.CachedImageRenderer.Init();
+            var ignore = new CircleTransformation();
 
             global::Xamarin.Forms.Forms.Init();
-			LoadApplication(new App());
+            LoadApplication(new App());
 
             UITabBar.Appearance.BackgroundColor = UIColor.FromRGB(21, 33, 41);
             UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(21, 33, 41); //bar background

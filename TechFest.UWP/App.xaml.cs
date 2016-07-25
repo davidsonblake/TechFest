@@ -50,6 +50,7 @@ namespace TechFest.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
+                FFImageLoading.Forms.WinUWP.CachedImageRenderer.Init();
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

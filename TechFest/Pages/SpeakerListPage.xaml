@@ -6,9 +6,9 @@
              x:Class="TechFest.Pages.SpeakerListPage"
 			 BackgroundColor="Transparent">
 	<ContentPage.Content>
-    <Grid BackgroundColor="Transparent" >
+    <Grid BackgroundColor="Transparent">
 		 <Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
-    	<ListView ItemsSource="{Binding Speakers}" 
+    	<ListView ItemsSource="{Binding Speakers}"
               BackgroundColor="Transparent"
               HasUnevenRows="True"
               SeparatorVisibility="None">
@@ -25,7 +25,7 @@
 									<TapGestureRecognizer Command="{Binding Speaker1Selected}" />
 								</StackLayout.GestureRecognizers>
                   				<ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
-											WidthRequest="170" HeightRequest="170" 
+											WidthRequest="170" HeightRequest="170"
 											Aspect="AspectFit"
 											Source="{Binding Speaker1.ThumbnailUrl}">
 									<ffimageloading:CachedImage.Transformations>
@@ -40,8 +40,8 @@
 								<TapGestureRecognizer Command="{Binding Speaker2Selected}" />
 							</StackLayout.GestureRecognizers>
 							<ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
-											WidthRequest="170" HeightRequest="170" 
-											Aspect="AspectFit" 
+											WidthRequest="170" HeightRequest="170"
+											Aspect="AspectFit"
 											Source="{Binding Speaker2.ThumbnailUrl}">
 									<ffimageloading:CachedImage.Transformations>
 										<fftransformations:RoundedTransformation />
@@ -55,8 +55,6 @@
       			</DataTemplate>
     		</ListView.ItemTemplate>
   		</ListView>
-		<ActivityIndicator Color="Aqua" IsRunning="{Binding IsBusy}" />
       </Grid>
-	  
 	</ContentPage.Content>
 </ContentPage>

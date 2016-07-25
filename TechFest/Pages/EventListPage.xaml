@@ -8,6 +8,5 @@
       		<TextCell  Text="{Binding Title}" />
     	</DataTemplate>
 	</ListView.ItemTemplate>
-	<ActivityIndicator Color="Aqua" IsRunning="{Binding IsBusy}" />
   </ListView>
 </ContentPage>

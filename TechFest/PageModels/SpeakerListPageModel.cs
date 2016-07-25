@@ -6,7 +6,7 @@ using TechFest.Models;
 
 namespace TechFest.PageModels
 {
-	public class SpeakerListPageModel : BasePageModel
+    public class SpeakerListPageModel : BasePageModel
     {
         public List<SpeakerPair> Speakers { get; set; }
 
@@ -17,38 +17,46 @@ namespace TechFest.PageModels
 
         protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
-			if (!HasAppeared)
-				await LoadSpeakers();
+            if (!HasAppeared)
+                await LoadSpeakers();
 
-			base.ViewIsAppearing(sender, e);
- 
+            base.ViewIsAppearing(sender, e);
         }
 
-		private async Task LoadSpeakers()
-		{
-			try {
-				var speakers = await DataService.GetSpeakersAsync();
-				var pairs = new List<SpeakerPair>();
-				if (speakers != null) {
-					for (int i = 0; i < speakers.Count; i = i + 2) {
-						var items = speakers.Skip(i).Take(2);
-						if (items != null) {
-							var pair = new SpeakerPair(HandleSpeakerSelected);
-							pair.Speaker1 = items.First();
-							if (items.Count() > 1)
-								pair.Speaker2 = items.Skip(1).Take(1).First();
+        private async Task LoadSpeakers()
+        {
+            try
+            {
+                IsBusy = true;
 
-							pairs.Add(pair);
-						}
-					}
+                var speakers = await DataService.GetSpeakersAsync();
+                var pairs = new List<SpeakerPair>();
+                if (speakers != null)
+                {
+                    for (int i = 0; i < speakers.Count; i = i + 2)
+                    {
+                        var items = speakers.Skip(i).Take(2);
+                        if (items != null)
+                        {
+                            var pair = new SpeakerPair(HandleSpeakerSelected);
+                            pair.Speaker1 = items.First();
+                            if (items.Count() > 1)
+                                pair.Speaker2 = items.Skip(1).Take(1).First();
 
-					Speakers = pairs;
+                            pairs.Add(pair);
+                        }
+                    }
 
-				}
-			} catch (Exception ex) {
-				await CoreMethods.DisplayAlert("Whoops!", ex.Message, "Ok");
-			}
-		}
+                    Speakers = pairs;
+                }
+            }
+            catch (Exception ex)
+            {
+                IsBusy = false;
+                await CoreMethods.DisplayAlert("Whoops!", ex.Message, "Ok");
+            }
+            IsBusy = false;
+        }
 
         private void HandleSpeakerSelected(Speaker speaker)
         {

@@ -1,5 +1,3 @@
-using System;
-using System.Windows.Input;
 using System.Xml.Serialization;
 
 namespace TechFest.Models
@@ -29,6 +27,5 @@ namespace TechFest.Models
         public string LastModified { get; set; }
 
         public string Title { get; set; }
-
     }
 }

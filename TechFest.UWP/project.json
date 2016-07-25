@@ -1,10 +1,20 @@
 ﻿{
   "dependencies": {
     "akavache": "4.1.2",
+    "akavache.sqlite3": "4.1.2",
     "FreshMvvm": "2.1.0",
     "HockeySDK.UWP": "4.1.1",
     "linqtotwitter": "4.1.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Rx-Main": "2.2.5",
+    "SlideOverKit": "2.1.1",
+    "Splat": "1.6.2",
+    "SQLitePCL.raw_basic": {
+      "version": "0.8.5",
+      "suppressParent": "none"
+    },
+    "Xamarin.FFImageLoading.Forms": "2.1.6",
+    "Xamarin.FFImageLoading.Transformations": "2.1.6",
     "Xamarin.Forms": "2.3.0.107"
   },
   "frameworks": {

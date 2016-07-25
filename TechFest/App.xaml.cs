@@ -1,9 +1,7 @@
-﻿using System.Reflection;
-using FreshMvvm;
+﻿using FreshMvvm;
 using TechFest.PageModels;
 using TechFest.Services;
 using Xamarin.Forms;
-
 
 namespace TechFest
 {
@@ -20,14 +18,14 @@ namespace TechFest
             mainTabbedNavigation.BarBackgroundColor = Color.FromHex("#152129");
             mainTabbedNavigation.BarTextColor = Color.FromHex("#F05A79");
 
-			var speakers = mainTabbedNavigation.AddTab<SpeakerListPageModel>("Speakers", null) as NavigationPage;
-			speakers.BackgroundColor = Color.Black;
+            var speakers = mainTabbedNavigation.AddTab<SpeakerListPageModel>("Speakers", null) as NavigationPage;
+            speakers.BackgroundColor = Color.Black;
 
             var sessions = mainTabbedNavigation.AddTab<SessionListPageModel>("Sessions", null);
-			sessions.BackgroundColor = Color.Black;
+            sessions.BackgroundColor = Color.Black;
 
             var sponsors = mainTabbedNavigation.AddTab<SponsorListPageModel>("Sponsors", null);
-			sponsors.BackgroundColor = Color.Black;
+            sponsors.BackgroundColor = Color.Black;
 
             var page = FreshPageModelResolver.ResolvePageModel<EventListPageModel>();
             var basicNavContainer = new FreshNavigationContainer(page, NavigationContainerNames.EventSelectionContainer);

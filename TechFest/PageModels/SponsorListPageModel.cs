@@ -36,28 +36,31 @@ namespace TechFest.PageModels
 
         protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
-			if (!HasAppeared)
-				await LoadSponsors();
+            if (!HasAppeared)
+                await LoadSponsors();
 
             base.ViewIsAppearing(sender, e);
-
         }
 
-		private async Task LoadSponsors()
-		{
-			try {
-				var sponsors = (await DataService.GetSponsersAsync()).GroupBy(x => x.SponsorshipLevel).Select(s => new { Key = s.Key, Sponsors = s.ToList() }).ToList();
-				var groupedSponsors = new List<SponsorList>();
+        private async Task LoadSponsors()
+        {
+            try
+            {
+                var sponsors = (await DataService.GetSponsersAsync()).GroupBy(x => x.SponsorshipLevel).Select(s => new { Key = s.Key, Sponsors = s.ToList() }).ToList();
+                var groupedSponsors = new List<SponsorList>();
 
-				foreach (var sponsor in sponsors) {
-					groupedSponsors.Add(new SponsorList(sponsor.Key, sponsor.Sponsors));
-				}
+                foreach (var sponsor in sponsors)
+                {
+                    groupedSponsors.Add(new SponsorList(sponsor.Key, sponsor.Sponsors));
+                }
 
-				Sponsors = groupedSponsors;
-			} catch (Exception ex) {
-				await CoreMethods.DisplayAlert("Whoops!", ex.Message, "Ok");
-			}
-		}
+                Sponsors = groupedSponsors;
+            }
+            catch (Exception ex)
+            {
+                await CoreMethods.DisplayAlert("Whoops!", ex.Message, "Ok");
+            }
+        }
 
         private void HandleSponsorSelected(Sponsor sponsor)
         {
@@ -65,14 +68,14 @@ namespace TechFest.PageModels
         }
     }
 
-	public class SponsorList : List<Sponsor>
-	{
-		public string Title { get; set; }
+    public class SponsorList : List<Sponsor>
+    {
+        public string Title { get; set; }
 
-		public SponsorList(string title, List<Sponsor> sponsors)
-		{
-			Title = title;
-			this.AddRange(sponsors);
-		}
-	}
+        public SponsorList(string title, List<Sponsor> sponsors)
+        {
+            Title = title;
+            this.AddRange(sponsors);
+        }
+    }
 }
