@@ -60,8 +60,17 @@ namespace TechFest.PageModels
                 DataService.SetBaseUrl(evnt.Url);
 
 				if (CurrentNavigationServiceName != Constants.DefaultNavigationServiceName) {
+                    
+				    if (Device.OS == TargetPlatform.iOS || Device.OS == TargetPlatform.Android)
+				    {
+				        CoreMethods.SwitchOutRootNavigation(NavigationContainerNames.MainContainer);
+				    }
+				    else
+				    {
+                        CoreMethods.SwitchOutRootNavigation(NavigationContainerNames.MainContainerNoMenu);
+				    }
 
-					CoreMethods.SwitchOutRootNavigation(NavigationContainerNames.MainContainer);
+
 				} else {
 					
 					MessagingCenter.Send(this, "Reload");

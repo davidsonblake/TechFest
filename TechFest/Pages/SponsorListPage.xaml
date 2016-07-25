@@ -3,10 +3,10 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 		xmlns:helpers="clr-namespace:TechFest.Helpers;assembly=TechFest"
 		x:Class="TechFest.Pages.SponsorListPage"
-    BackgroundColor="{StaticResource darkGray}">
+    BackgroundColor="Transparent">
 	<ContentPage.Content>
    <Grid>
-		<Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
+     <!-- <Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" /> -->
     	<ListView x:Name="lstSponsors"
 			  BackgroundColor="Transparent" ItemsSource="{Binding Sponsors}"
               IsGroupingEnabled="True"

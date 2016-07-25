@@ -17,7 +17,7 @@ namespace TechFest
 
 			var mainMasterDetail = new FreshMasterDetailNavigationContainer(NavigationContainerNames.MainContainer);
 
-			var mainTabbedNavigation = new FreshTabbedNavigationContainer();
+			var mainTabbedNavigation = new FreshTabbedNavigationContainer(NavigationContainerNames.MainContainerNoMenu);
             mainTabbedNavigation.BarBackgroundColor = Color.FromHex("#152129");
             mainTabbedNavigation.BarTextColor = Color.FromHex("#F05A79");
             mainTabbedNavigation.BackgroundColor = Color.FromHex("#152129");

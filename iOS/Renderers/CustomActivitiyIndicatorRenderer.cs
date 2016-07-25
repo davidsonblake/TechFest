@@ -1,10 +1,10 @@
 ﻿using BigTed;
-using TechFest.iOS;
+using TechFest.iOS.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(ActivityIndicator), typeof(CustomActivitiyIndicatorRenderer))]
-namespace TechFest.iOS
+namespace TechFest.iOS.Renderers
 {
     public class CustomActivitiyIndicatorRenderer : ActivityIndicatorRenderer
     {
