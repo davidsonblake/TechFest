@@ -14,7 +14,9 @@ namespace TechFest
             RegisterIoc();
             Akavache.BlobCache.ApplicationName = "TechFest";
 
-            var mainTabbedNavigation = new FreshTabbedNavigationContainer(NavigationContainerNames.MainContainer);
+			var mainMasterDetail = new FreshMasterDetailNavigationContainer(NavigationContainerNames.MainContainer);
+
+			var mainTabbedNavigation = new FreshTabbedNavigationContainer();
             mainTabbedNavigation.BarBackgroundColor = Color.FromHex("#152129");
             mainTabbedNavigation.BarTextColor = Color.FromHex("#F05A79");
 
@@ -27,7 +29,12 @@ namespace TechFest
             var sponsors = mainTabbedNavigation.AddTab<SponsorListPageModel>("Sponsors", null);
             sponsors.BackgroundColor = Color.Black;
 
-            var page = FreshPageModelResolver.ResolvePageModel<EventListPageModel>();
+			var page = FreshPageModelResolver.ResolvePageModel<EventListPageModel>();
+			var eventPage = FreshPageModelResolver.ResolvePageModel<EventListPageModel>();
+
+			mainMasterDetail.Master = eventPage;
+			mainMasterDetail.Detail = mainTabbedNavigation;
+
             var basicNavContainer = new FreshNavigationContainer(page, NavigationContainerNames.EventSelectionContainer);
             basicNavContainer.BarBackgroundColor = Color.FromHex("#152129");
 

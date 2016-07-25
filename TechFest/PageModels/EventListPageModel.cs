@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FreshMvvm;
 using TechFest.Models;
 using Xamarin.Forms;
 
@@ -66,7 +67,7 @@ namespace TechFest.PageModels
             {
                 DataService.SetBaseUrl(evnt.Url);
 
-                CoreMethods.SwitchOutRootNavigation(NavigationContainerNames.MainContainer);
+				CoreMethods.SwitchOutRootNavigation(NavigationContainerNames.MainContainer);
             }
             else
             {
