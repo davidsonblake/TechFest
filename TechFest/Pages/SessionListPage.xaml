@@ -6,8 +6,9 @@
 	<ContentPage.Content>
    <Grid>
 		<Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
-    	<ListView BackgroundColor="Transparent" ItemsSource="{Binding Sessions}"
-              SelectedItem="{Binding SelectedSession}"
+    	<ListView x:Name="lstSessions"
+    		  ItemSelected="Handle_ItemSelected"
+			  BackgroundColor="Transparent" ItemsSource="{Binding Sessions}"
               IsGroupingEnabled="True"
               GroupDisplayBinding="{Binding Title}"
               HasUnevenRows="True">

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TechFest.Models;
 using Xamarin.Forms;
 
@@ -35,10 +36,16 @@ namespace TechFest.PageModels
 
         protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
+			if (!HasAppeared)
+				await LoadSponsors();
+
             base.ViewIsAppearing(sender, e);
 
-            try
-            {
+        }
+
+		private async Task LoadSponsors()
+		{
+			try {
 				var sponsors = (await DataService.GetSponsersAsync()).GroupBy(x => x.SponsorshipLevel).Select(s => new { Key = s.Key, Sponsors = s.ToList() }).ToList();
 				var groupedSponsors = new List<SponsorList>();
 
@@ -47,12 +54,10 @@ namespace TechFest.PageModels
 				}
 
 				Sponsors = groupedSponsors;
-            }
-            catch (Exception ex)
-            {
-                await CoreMethods.DisplayAlert("Whoops!", ex.Message, "Ok");
-            }
-        }
+			} catch (Exception ex) {
+				await CoreMethods.DisplayAlert("Whoops!", ex.Message, "Ok");
+			}
+		}
 
         private void HandleSponsorSelected(Sponsor sponsor)
         {

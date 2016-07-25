@@ -32,7 +32,7 @@ namespace TechFest
             var page = FreshPageModelResolver.ResolvePageModel<EventListPageModel>();
             var basicNavContainer = new FreshNavigationContainer(page, NavigationContainerNames.EventSelectionContainer);
             basicNavContainer.BarBackgroundColor = Color.FromHex("#152129");
-			basicNavContainer.BackgroundColor = Color.Aqua;
+
             MainPage = basicNavContainer;
         }
 

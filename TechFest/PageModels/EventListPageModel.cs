@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TechFest.Models;
 using Xamarin.Forms;
 
@@ -34,24 +35,29 @@ namespace TechFest.PageModels
 
         protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
-            base.ViewIsAppearing(sender, e);
+			if (!HasAppeared)
+				await LoadEvents();
 
-            IsBusy = true;
-
-            try
-            {
-                var events = await DataService.GetCurrentEventsAsync();
-                events.AddRange(await DataService.GetPreviousEventsAsync());
-                Events = events;
-            }
-            catch (Exception ex)
-            {
-                var msg = ex.Message;
-                await CoreMethods.DisplayAlert("Whoops!", "There was a problem getting the events. Please try again " + msg, "Ok");
-            }
-
-            IsBusy = false;
+			base.ViewIsAppearing(sender, e);
         }
+
+		private async Task LoadEvents()
+		{
+
+
+			IsBusy = true;
+
+			try {
+				var events = await DataService.GetCurrentEventsAsync();
+				events.AddRange(await DataService.GetPreviousEventsAsync());
+				Events = events;
+			} catch (Exception ex) {
+				var msg = ex.Message;
+				await CoreMethods.DisplayAlert("Whoops!", "There was a problem getting the events. Please try again " + msg, "Ok");
+			}
+
+			IsBusy = false;
+		}
 
 
         private void HandleEventSelected(Event evnt)

@@ -55,6 +55,8 @@
       			</DataTemplate>
     		</ListView.ItemTemplate>
   		</ListView>
+		<ActivityIndicator Color="Aqua" IsRunning="{Binding IsBusy}" />
       </Grid>
+	  
 	</ContentPage.Content>
 </ContentPage>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using TechFest.Models;
 using Xamarin.Forms;
 
@@ -9,22 +10,6 @@ namespace TechFest.PageModels
     public class SessionListPageModel : BasePageModel
     {
         public List<SessionList> Sessions { get; set; }
-
-        private Session _selectedSession;
-
-        public Session SelectedSession
-        {
-            get
-            {
-                return _selectedSession;
-            }
-            set
-            {
-                _selectedSession = value;
-                if (value != null)
-                    SessionSelected.Execute(value);
-            }
-        }
 
         public SessionListPageModel(IDataService dataService)
             : base(dataService)
@@ -35,31 +20,35 @@ namespace TechFest.PageModels
 
         protected override async void ViewIsAppearing(object sender, EventArgs e)
         {
-            base.ViewIsAppearing(sender, e);
+			if (!HasAppeared)
+				await LoadSessions();
 
-            try
-            {
-                var sessions = (await DataService.GetSessionsAsync()).GroupBy(x => x.Track).Select(s => new { Key = s.Key, Sessions = s.ToList() }).ToList();
-                var groupedSessions = new List<SessionList>();
+			base.ViewIsAppearing(sender, e);
+		}
 
-                foreach (var session in sessions)
-                {
-                    groupedSessions.Add(new SessionList(session.Key, session.Sessions));
-                }
+		private async Task LoadSessions()
+		{
+			try {
+				var sessions = (await DataService.GetSessionsAsync()).GroupBy(x => x.Track).Select(s => new { Key = s.Key, Sessions = s.ToList() }).ToList();
+				var groupedSessions = new List<SessionList>();
 
-                Sessions = groupedSessions;
-            }
-            catch (Exception ex)
-            {
-                await CoreMethods.DisplayAlert("Whoops!", ex.Message, "Ok");
-            }
-        }
+				foreach (var session in sessions) {
+					groupedSessions.Add(new SessionList(session.Key, session.Sessions));
+				}
+
+				Sessions = groupedSessions;
+			} catch (Exception ex) {
+				await CoreMethods.DisplayAlert("Whoops!", ex.Message, "Ok");
+			}
+		}
 
         private void HandleSessionSelected(Session session)
         {
             CoreMethods.PushPageModel<SessionPageModel>(session);
         }
     }
+
+
 
     public class SessionList : List<Session>
     {
