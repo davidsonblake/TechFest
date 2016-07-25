@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 		xmlns:helpers="clr-namespace:TechFest.Helpers;assembly=TechFest"
-		x:Class="TechFest.Pages.SponsorListPage">
+		x:Class="TechFest.Pages.SponsorListPage"
+    BackgroundColor="{StaticResource darkGray}">
 	<ContentPage.Content>
    <Grid>
 		<Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />

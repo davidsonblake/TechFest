@@ -20,6 +20,7 @@ namespace TechFest
 			var mainTabbedNavigation = new FreshTabbedNavigationContainer();
             mainTabbedNavigation.BarBackgroundColor = Color.FromHex("#152129");
             mainTabbedNavigation.BarTextColor = Color.FromHex("#F05A79");
+            mainTabbedNavigation.BackgroundColor = Color.FromHex("#152129");
 
             var speakers = mainTabbedNavigation.AddTab<SpeakerListPageModel>("Speakers", null) as NavigationPage;
             speakers.BackgroundColor = Color.Black;
@@ -37,6 +38,8 @@ namespace TechFest
 
 			mainMasterDetail.Master = eventPage;
 			mainMasterDetail.Detail = mainTabbedNavigation;
+
+            mainMasterDetail.BackgroundColor = Color.FromHex("#152129");
 
             var basicNavContainer = new FreshNavigationContainer(page, NavigationContainerNames.EventSelectionContainer);
             basicNavContainer.BarBackgroundColor = Color.FromHex("#152129");
