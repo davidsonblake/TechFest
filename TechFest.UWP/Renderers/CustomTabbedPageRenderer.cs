@@ -4,6 +4,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using TechFest.UWP.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
+
 [assembly: ExportRenderer(typeof(TabbedPage), typeof(CustomTabbedPageRenderer))]
 namespace TechFest.UWP.Renderers
 {

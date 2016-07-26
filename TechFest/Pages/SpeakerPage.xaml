@@ -4,7 +4,8 @@
              xmlns:helpers="clr-namespace:TechFest.Helpers;assembly=TechFest"
 			 xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
 			 xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             x:Class="TechFest.Pages.SpeakerPage">
+			 xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
+			 x:Class="TechFest.Pages.SpeakerPage">
   <ContentPage.Content>
     <Grid BackgroundColor="Transparent">
       <Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
@@ -59,15 +60,15 @@
               Text="{Binding Speaker.Bio}" />
             </StackLayout>
             <StackLayout Spacing="2" Orientation="Horizontal">
-              <!--	<svg:SvgImage Svg="res:Images.YouTube" HeightRequest="32" />
-				<svg:SvgImage Svg="res:Images.Facebook" HeightRequest="32" />
-				<svg:SvgImage Svg="res:Images.Twitter" HeightRequest="32" />
-			    <svg:SvgImage Svg="res:Images.GooglePlus" HeightRequest="32" />
-				<svg:SvgImage Svg="res:Images.Github" HeightRequest="32" />
-				<svg:SvgImage Svg="res:Images.LinkedIn" HeightRequest="32" />
-				<svg:SvgImage Svg="res:Images.RSS" HeightRequest="32" />
-				<svg:SvgImage Svg="res:Images.StackOverflow" HeightRequest="32" />
-				<svg:SvgImage Svg="res:Images.Flickr" HeightRequest="32" />  -->
+              	<svg:SvgImage Svg="res:Images.YouTube" HeightRequest="32" />
+				        <svg:SvgImage Svg="res:Images.Facebook" HeightRequest="32" />
+				        <svg:SvgImage Svg="res:Images.Twitter" HeightRequest="32" />
+			          <svg:SvgImage Svg="res:Images.GooglePlus" HeightRequest="32" />
+				        <svg:SvgImage Svg="res:Images.Github" HeightRequest="32" />
+				        <svg:SvgImage Svg="res:Images.LinkedIn" HeightRequest="32" />
+				        <svg:SvgImage Svg="res:Images.RSS" HeightRequest="32" />
+				        <svg:SvgImage Svg="res:Images.StackOverflow" HeightRequest="32" />
+				        <svg:SvgImage Svg="res:Images.Flickr" HeightRequest="32" /> 
             </StackLayout>
           </StackLayout>
         </StackLayout>

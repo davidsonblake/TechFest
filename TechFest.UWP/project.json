@@ -13,6 +13,7 @@
       "version": "0.8.5",
       "suppressParent": "none"
     },
+    "Vapolia.XamSvg.Forms": "2.3.0.7",
     "Xamarin.FFImageLoading.Forms": "2.1.6",
     "Xamarin.FFImageLoading.Transformations": "2.1.6",
     "Xamarin.Forms": "2.3.0.107"
