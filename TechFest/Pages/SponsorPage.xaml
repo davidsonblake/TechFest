@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 		     xmlns:helpers="clr-namespace:TechFest.Helpers;assembly=TechFest"
-             x:Class="TechFest.Pages.SponsorPage">
+		     xmlns:techFest="clr-namespace:TechFest;assembly=TechFest"
+		     xmlns:xamForms="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
+		     x:Class="TechFest.Pages.SponsorPage">
  	<Grid>
 		<Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
   		<ScrollView>
@@ -14,18 +16,31 @@
         		</StackLayout>
 	    		<StackLayout BackgroundColor="{StaticResource detailBackground}">
 					<StackLayout Margin="41,9,5,9">
-        			<StackLayout Orientation="Horizontal">
-                		<Label Style="{DynamicResource detailLabel}" FontAttributes="Bold" Text="Link:" />
-						<Label Style="{DynamicResource detailLabel}" Text="{Binding Sponsor.Link}" />
-            		</StackLayout>
+        	  <StackLayout Orientation="Horizontal">
+              <Label Style="{DynamicResource detailLabel}" FontAttributes="Bold" Text="Link:" />
+						   <Label Style="{DynamicResource detailLabel}" Text="{Binding Sponsor.Link}" />
+            </StackLayout>
 		    		<StackLayout Orientation="Horizontal">
-                		<Label Style="{DynamicResource detailLabel}" FontAttributes="Bold" Text="Sponsorship Level:" />
-						<Label Style="{DynamicResource detailLabel}" Text="{Binding Sponsor.SponsorshipLevel}" />
-            		</StackLayout>
-        			<StackLayout Orientation="Horizontal">
-						<Label Style="{DynamicResource detailLabel}" Text="{Binding Sponsor.Description}" />
-            		</StackLayout>
-					</StackLayout>
+              <Label Style="{DynamicResource detailLabel}" FontAttributes="Bold" Text="Sponsorship Level:" />
+						  <Label Style="{DynamicResource detailLabel}" Text="{Binding Sponsor.SponsorshipLevel}" />
+            </StackLayout>
+        		<StackLayout Orientation="Horizontal">
+						  <Label Style="{DynamicResource detailLabel}" Text="{Binding Sponsor.Description}" />
+            </StackLayout>
+            <techFest:WrapLayout Spacing="2" >
+              <xamForms:SvgImage Svg="res:Images.YouTube" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Sponsor.YouTube}" IsVisible="{Binding Sponsor.YouTube, Converter={StaticResource HasDataConverter }}" />
+              <xamForms:SvgImage Svg="res:Images.Facebook" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Sponsor.Facebook}" IsVisible="{Binding Sponsor.Facebook, Converter={StaticResource HasDataConverter }}" />
+              <xamForms:SvgImage Svg="res:Images.Twitter" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Sponsor.Twitter}" IsVisible="{Binding Sponsor.Twitter, Converter={StaticResource HasDataConverter }}" />
+              <xamForms:SvgImage Svg="res:Images.GooglePlus" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Sponsor.GooglePlus}" IsVisible="{Binding Sponsor.GooglePlus, Converter={StaticResource HasDataConverter }}"/>
+              <xamForms:SvgImage Svg="res:Images.Github" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Sponsor.Github}" IsVisible="{Binding Sponsor.Github, Converter={StaticResource HasDataConverter }}"/>
+              <xamForms:SvgImage Svg="res:Images.LinkedIn" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Sponsor.LinkedIn}" IsVisible="{Binding Sponsor.LinkedIn, Converter={StaticResource HasDataConverter }}" />
+              <xamForms:SvgImage Svg="res:Images.RSS" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Sponsor.Rss}" IsVisible="{Binding Sponsor.Rss, Converter={StaticResource HasDataConverter }}"/>
+              <xamForms:SvgImage Svg="res:Images.StackOverflow" Command="{Binding SocialSelected}" CommandParameter="{Binding Sponsor.StackOverflow}" IsVisible="{Binding Sponsor.StackOverflow, Converter={StaticResource HasDataConverter }}" HeightRequest="32"  />
+              <xamForms:SvgImage Svg="res:Images.pinterest" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Sponsor.Pinterest}" IsVisible="{Binding Sponsor.Pinterest, Converter={StaticResource HasDataConverter }}" />
+              <xamForms:SvgImage Svg="res:Images.Flickr" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Sponsor.Flickr}" IsVisible="{Binding Sponsor.Flickr, Converter={StaticResource HasDataConverter }}" />
+              <xamForms:SvgImage Svg="res:Images.Instagram" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Sponsor.Instagram}" IsVisible="{Binding Sponsor.Instagram, Converter={StaticResource HasDataConverter }}" />
+             </techFest:WrapLayout>
+				  </StackLayout>
     			</StackLayout>
     		</StackLayout>
   		</ScrollView>

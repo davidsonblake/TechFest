@@ -1,7 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TechFest.App">
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:TechFest.Converters;assembly=TechFest"
+             x:Class="TechFest.App">
 	<Application.Resources>
 		<ResourceDictionary>
+
+      <converters:HasDataConverter x:Key="HasDataConverter"></converters:HasDataConverter>
+      
 			<Color x:Key="titleBackground">#6B027473</Color>
 			<Color x:Key="detailBackground">#8C02d2d0</Color>
 			<Color x:Key="darkGray">#152129</Color>

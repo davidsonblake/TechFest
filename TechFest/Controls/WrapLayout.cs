@@ -17,9 +17,8 @@ namespace TechFest
 		/// Backing Storage for the Spacing property
 		/// </summary>
 		public static readonly BindableProperty SpacingProperty =
-			BindableProperty.Create<WrapLayout, double>(w => w.Spacing, 5,
-				propertyChanged: (bindable, oldvalue, newvalue) => ((WrapLayout)bindable).layoutCache.Clear());
-
+            BindableProperty.Create(nameof(Spacing), typeof(double),typeof(WrapLayout),(double)5.0, propertyChanged: (bindable, oldvalue, newvalue) => ((WrapLayout)bindable).layoutCache.Clear());
+        
 		/// <summary>
 		/// Spacing added between elements (both directions)
 		/// </summary>
@@ -40,7 +39,7 @@ namespace TechFest
 			layoutCache.Clear();
 		}
 
-		protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
+	    protected override SizeRequest OnSizeRequest(double widthConstraint, double heightConstraint)
 		{
 
 			double lastX;
@@ -78,6 +77,10 @@ namespace TechFest
 			var currentList = new List<Tuple<View, Rectangle>>();
 
 			foreach (var child in Children) {
+
+                if(!child.IsVisible)
+                    continue;
+
 				SizeRequest sizeRequest;
 				if (!layoutCache.TryGetValue(child, out sizeRequest)) {
 					layoutCache[child] = sizeRequest = child.Measure(double.PositiveInfinity, double.PositiveInfinity);				}

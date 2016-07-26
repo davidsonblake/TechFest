@@ -96,7 +96,7 @@ namespace TechFest.Models
         public string Mvp { get; set; }
 
         [XmlElement(ElementName = "XING")]
-        public string XING { get; set; }
+        public string Xing { get; set; }
 
         public string Name { get; set; }
 
