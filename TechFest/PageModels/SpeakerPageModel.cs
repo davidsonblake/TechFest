@@ -24,6 +24,9 @@ namespace TechFest.PageModels
 
         private void HandleSocialSelected(string obj)
         {
+			if (string.IsNullOrEmpty(obj))
+				return;
+
             if (obj.StartsWith(@"//"))
                 obj = "http:" + obj;
 
