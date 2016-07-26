@@ -20,7 +20,7 @@
           Aspect="AspectFit"
           Source="{Binding Speaker.ThumbnailUrl}">
               <ffimageloading:CachedImage.Transformations>
-                <fftransformations:RoundedTransformation />
+                <fftransformations:RoundedTransformation BorderSize="10" BorderHexColor="#00ffff"  />
               </ffimageloading:CachedImage.Transformations>
             </ffimageloading:CachedImage>
           </StackLayout>
