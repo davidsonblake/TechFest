@@ -11,6 +11,8 @@ namespace TechFest.PageModels
     {
         public List<SessionList> Sessions { get; set; }
 
+		public bool IsBgImageVisible => Device.OS == TargetPlatform.iOS || Device.OS == TargetPlatform.Android;
+
 		public SessionListPageModel(IDataService dataService)
 			: base(dataService)
 		{

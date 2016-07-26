@@ -7,7 +7,7 @@
 			       BackgroundColor="Transparent">
 	<ContentPage.Content>
     <Grid BackgroundColor="Transparent">
-      <!-- <Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" /> -->
+       <Image Aspect="AspectFill" IsVisible="{Binding IsBgImageVisible}" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" /> 
     	<ListView x:Name="lstSpeakers" 
 			  ItemsSource="{Binding Speakers}"
               BackgroundColor="Transparent"

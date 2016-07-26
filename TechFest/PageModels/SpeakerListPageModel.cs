@@ -11,7 +11,9 @@ namespace TechFest.PageModels
     {
         public List<SpeakerPair> Speakers { get; set; }
 
-        public SpeakerListPageModel(IDataService dataService)
+		public bool IsBgImageVisible => Device.OS == TargetPlatform.iOS || Device.OS == TargetPlatform.Android;
+
+		public SpeakerListPageModel(IDataService dataService)
             : base(dataService)
         {
 			MessagingCenter.Subscribe<EventListPageModel>(this, "Reload", async (obj) => {
