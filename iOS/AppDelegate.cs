@@ -2,6 +2,7 @@
 using Foundation;
 using HockeyApp.iOS;
 using UIKit;
+using XamSvg.XamForms.iOS;
 
 namespace TechFest.iOS
 {
@@ -17,7 +18,8 @@ namespace TechFest.iOS
             var ignore = new CircleTransformation();
 
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+			SvgImageRenderer.InitializeForms();
+			LoadApplication(new App());
 
             UITabBar.Appearance.BackgroundColor = UIColor.FromRGB(21, 33, 41);
             UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(21, 33, 41); //bar background

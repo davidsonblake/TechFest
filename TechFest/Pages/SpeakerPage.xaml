@@ -61,14 +61,27 @@
             </StackLayout>
             <StackLayout Spacing="2" Orientation="Horizontal">
               	<svg:SvgImage Svg="res:Images.YouTube" HeightRequest="32" />
-				        <svg:SvgImage Svg="res:Images.Facebook" HeightRequest="32" />
-				        <svg:SvgImage Svg="res:Images.Twitter" HeightRequest="32" />
-			          <svg:SvgImage Svg="res:Images.GooglePlus" HeightRequest="32" />
-				        <svg:SvgImage Svg="res:Images.Github" HeightRequest="32" />
-				        <svg:SvgImage Svg="res:Images.LinkedIn" HeightRequest="32" />
-				        <svg:SvgImage Svg="res:Images.RSS" HeightRequest="32" />
-				        <svg:SvgImage Svg="res:Images.StackOverflow" HeightRequest="32" />
-				        <svg:SvgImage Svg="res:Images.Flickr" HeightRequest="32" /> 
+				<svg:SvgImage Svg="res:Images.Facebook" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Twitter" HeightRequest="32" />
+			    <svg:SvgImage Svg="res:Images.GooglePlus" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Github" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.LinkedIn" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.RSS" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.StackOverflow" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.pinterest" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Flickr" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Aboutme" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Speakerrate" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Dribble" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.FourSquare" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Instagram" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Myspace" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.SlideShare" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.SoundCloud" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Speakerdeck" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Myspace" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Tumblr" HeightRequest="32" />
+				<svg:SvgImage Svg="res:Images.Xing" HeightRequest="32" />
             </StackLayout>
           </StackLayout>
         </StackLayout>

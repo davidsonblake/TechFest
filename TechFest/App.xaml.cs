@@ -1,4 +1,5 @@
-﻿using FreshMvvm;
+﻿using System.Reflection;
+using FreshMvvm;
 using TechFest.PageModels;
 using TechFest.Pages;
 using TechFest.Services;
@@ -11,6 +12,9 @@ namespace TechFest
         public App()
         {
             InitializeComponent();
+
+			var assembly = typeof(App).GetTypeInfo().Assembly;
+			XamSvg.Shared.Config.ResourceAssembly = assembly;
 
             RegisterIoc();
             Akavache.BlobCache.ApplicationName = "TechFest";

@@ -47,9 +47,20 @@
     <EmbeddedResource Include="Images\GooglePlus.svg" />
     <EmbeddedResource Include="Images\LinkedIn.svg" />
     <EmbeddedResource Include="Images\RSS.svg" />
-    <EmbeddedResource Include="Images\StackOverflow.svg" />
+    <EmbeddedResource Include="Images\pinterest.svg" />
     <EmbeddedResource Include="Images\Twitter.svg" />
     <EmbeddedResource Include="Images\YouTube.svg" />
+    <EmbeddedResource Include="Images\Aboutme.svg" />
+    <EmbeddedResource Include="Images\Speakerrate.svg" />
+    <EmbeddedResource Include="Images\StackOverflow.svg" />
+    <EmbeddedResource Include="Images\HamburgerMenuIcon.svg" />
+    <EmbeddedResource Include="Images\Dribble.svg" />
+    <EmbeddedResource Include="Images\FourSquare.svg" />
+    <EmbeddedResource Include="Images\Instagram.svg" />
+    <EmbeddedResource Include="Images\Myspace.svg" />
+    <EmbeddedResource Include="Images\SlideShare.svg" />
+    <EmbeddedResource Include="Images\SoundCloud.svg" />
+    <EmbeddedResource Include="Images\Speakerdeck.svg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
@@ -135,6 +146,7 @@
     <Compile Include="Models\Track.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\ResourceLoader.cs" />
+    <Compile Include="Controls\WrapLayout.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Akavache, Version=4.1.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -231,6 +243,8 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="FodyWeavers.xml" />
+    <None Include="Images\Tumblr.svg" />
+    <None Include="Images\Xing.svg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\SpeakerPage.xaml">
@@ -265,6 +279,9 @@
     <EmbeddedResource Include="Images\rss-symbol.png" />
     <EmbeddedResource Include="Images\search.png" />
     <EmbeddedResource Include="Images\speaker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.0.49\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.0.49\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
