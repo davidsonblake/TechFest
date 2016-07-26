@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using TechFest.UWP.Renderers;
@@ -12,11 +13,22 @@ namespace TechFest.UWP.Renderers
     {
         protected override void OnElementChanged(VisualElementChangedEventArgs e)
         {
-            base.OnElementChanged(e);
+            if(e.NewElement == null)
+                return;
             
+            Control.Background = new SolidColorBrush(Windows.UI.Colors.Black);
+
             var brush = new ImageBrush();
             brush.ImageSource = new BitmapImage(new Uri("ms-appx:///Assets/SessionsBackground.png"));
             Control.Background = brush;
+
+            var headerTemplate = App.Current.Resources.SingleOrDefault(x => x.Key.ToString() == "PanoramaItemHeader").Value as Windows.UI.Xaml.DataTemplate;
+            if (headerTemplate != null)
+            {
+               Control.HeaderTemplate = headerTemplate;
+            }
+            
+            base.OnElementChanged(e);
         }
     }
 }

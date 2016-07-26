@@ -54,9 +54,6 @@ namespace TechFest.PageModels
         {
             if (evnt.Hosted.ToLower() == "yes")
             {
-				if (DataService.BaseUrl == evnt.Url)
-					return;
-
                 DataService.SetBaseUrl(evnt.Url);
 
 				if (CurrentNavigationServiceName != Constants.DefaultNavigationServiceName) {
@@ -65,15 +62,15 @@ namespace TechFest.PageModels
 						CoreMethods.SwitchOutRootNavigation(NavigationContainerNames.MainContainer);
 					} else {
 
-						var masterDetail = FreshIOC.Container.Resolve<IFreshNavigationService>(NavigationContainerNames.MainContainer) as FreshMasterDetailNavigationContainer;
+                        MessagingCenter.Send(this, "Reload");
+
+                        var masterDetail = FreshIOC.Container.Resolve<IFreshNavigationService>(NavigationContainerNames.MainContainer) as FreshMasterDetailNavigationContainer;
 						var page = masterDetail.Detail;
+					    page.Parent = null;
+                        page.BackgroundColor = Color.Black;
 						CurrentPage.Navigation.PushAsync(page);
-					}
-				    
-				} else {
-					
-					MessagingCenter.Send(this, "Reload");
-				}
+					}  
+				} 
             }
             else
             {

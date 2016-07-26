@@ -17,6 +17,9 @@ namespace TechFest.PageModels
             : base(dataService)
         {
 			MessagingCenter.Subscribe<EventListPageModel>(this, "Reload", async (obj) => {
+                if(!HasAppeared)
+                    return;
+			                                                                                 ;
 				await CoreMethods.PopToRoot(false);
 				await LoadSpeakers();
 			});
