@@ -6,7 +6,7 @@
     BackgroundColor="Transparent">
 	<ContentPage.Content>
    <Grid>
-     <!-- <Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" /> -->
+      <Image IsVisible="{Binding IsBgImageVisible}" Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
     	<ListView x:Name="lstSponsors"
 			  BackgroundColor="Transparent" ItemsSource="{Binding Sponsors}"
               IsGroupingEnabled="True"

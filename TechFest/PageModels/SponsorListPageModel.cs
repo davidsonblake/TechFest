@@ -11,7 +11,9 @@ namespace TechFest.PageModels
     {
         public List<SponsorList> Sponsors { get; set; }
 
-        private Sponsor _selectedSponsor;
+		public bool IsBgImageVisible => Device.OS == TargetPlatform.iOS || Device.OS == TargetPlatform.Android;
+
+		private Sponsor _selectedSponsor;
 
         public Sponsor SelectedSponsor
         {
