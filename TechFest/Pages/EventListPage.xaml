@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TechFest.Pages.EventListPage"
 		     BackgroundColor="{StaticResource darkGray}"
+		     xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
 			 xmlns:helpers="clr-namespace:TechFest.Helpers;assembly=TechFest"
-			 Title="Events" >
+			 Title="Events"
+		     Icon="Menu.png">
 	<ContentPage.Content>
    <Grid Margin="0,20,0,0">
-		<Image x:Name="imgMain" Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
 		<ListView x:Name="lstEvents"
     		  ItemSelected="Handle_ItemSelected"
 			  BackgroundColor="Transparent" 
@@ -21,7 +22,7 @@
       <ListView.GroupHeaderTemplate>
         <DataTemplate>
           <ViewCell Height="30">
-            <StackLayout BackgroundColor="{StaticResource titleBackground}">
+            <StackLayout BackgroundColor="#1D2D37">
               <StackLayout VerticalOptions="Center" Margin="21,0,5,0">
                 <Label Style="{DynamicResource titleLabel}" Text="{Binding Title}" />
               </StackLayout>
@@ -32,7 +33,7 @@
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>
-            <StackLayout BackgroundColor="{StaticResource detailBackground}">
+            <StackLayout BackgroundColor="#243844">
               <StackLayout Margin="41,9,5,9">
                 <Label Style="{DynamicResource detailLabel}" Text="{Binding Title}" />
             </StackLayout>

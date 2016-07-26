@@ -25,9 +25,5 @@ namespace TechFest.Pages
 			lstEvents.IsRefreshing = false;
 		}
 
-		public void HideBackgroundImage()
-		{
-			imgMain.IsVisible = false;
-		}
 	}
 }

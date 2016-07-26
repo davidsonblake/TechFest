@@ -290,6 +290,7 @@
     <Compile Include="Renderers\TransparentViewCellRenderer.cs" />
     <Compile Include="Renderers\HtmlLabelRenderer.cs" />
     <Compile Include="Renderers\CustomActivitiyIndicatorRenderer.cs" />
+    <Compile Include="Renderers\CustomTabbedPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default%402x.png" />
@@ -302,6 +303,8 @@
     <BundleResource Include="Resources\Icon.png" />
     <Content Include="Linker.xml" />
     <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Menu%402x.png" />
+    <BundleResource Include="Resources\Menu.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="hockeyappios">

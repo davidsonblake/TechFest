@@ -17,6 +17,9 @@ namespace TechFest.iOS
             if (e.NewElement == null)
                 return;
 
+			if (string.IsNullOrEmpty(Control.Text))
+				return;
+
             var text = Control.Text.AsAttributedString(NSDocumentType.HTML);
             Control.AttributedText = new UITextView { AttributedText = text }.AttributedText;
             Control.TextColor = e.NewElement.TextColor.ToUIColor();

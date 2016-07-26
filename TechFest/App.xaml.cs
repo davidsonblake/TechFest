@@ -4,6 +4,7 @@ using TechFest.PageModels;
 using TechFest.Pages;
 using TechFest.Services;
 using Xamarin.Forms;
+using XamSvg.XamForms;
 
 namespace TechFest
 {
@@ -29,7 +30,7 @@ namespace TechFest
             var speakers = mainTabbedNavigation.AddTab<SpeakerListPageModel>("Speakers", null) as NavigationPage;
             speakers.BackgroundColor = Color.Black;
 
-            var sessions = mainTabbedNavigation.AddTab<SessionListPageModel>("Sessions", null);
+			var sessions = mainTabbedNavigation.AddTab<SessionListPageModel>("Sessions", null);
             sessions.BackgroundColor = Color.Black;
 
             var sponsors = mainTabbedNavigation.AddTab<SponsorListPageModel>("Sponsors", null);
@@ -37,8 +38,6 @@ namespace TechFest
 
 			var page = FreshPageModelResolver.ResolvePageModel<EventListPageModel>();
 			var eventPage = FreshPageModelResolver.ResolvePageModel<EventListPageModel>();
-
-			((EventListPage)eventPage).HideBackgroundImage();
 
 			mainMasterDetail.Master = eventPage;
 			mainMasterDetail.Detail = mainTabbedNavigation;

@@ -53,7 +53,7 @@
     <EmbeddedResource Include="Images\Aboutme.svg" />
     <EmbeddedResource Include="Images\Speakerrate.svg" />
     <EmbeddedResource Include="Images\StackOverflow.svg" />
-    <EmbeddedResource Include="Images\HamburgerMenuIcon.svg" />
+    <EmbeddedResource Include="Images\Menu.svg" />
     <EmbeddedResource Include="Images\Dribble.svg" />
     <EmbeddedResource Include="Images\FourSquare.svg" />
     <EmbeddedResource Include="Images\Instagram.svg" />
@@ -61,6 +61,13 @@
     <EmbeddedResource Include="Images\SlideShare.svg" />
     <EmbeddedResource Include="Images\SoundCloud.svg" />
     <EmbeddedResource Include="Images\Speakerdeck.svg" />
+    <EmbeddedResource Include="Images\Tumblr.svg" />
+    <EmbeddedResource Include="Images\Xing.svg" />
+    <EmbeddedResource Include="Images\code.svg" />
+    <EmbeddedResource Include="Images\moneybag.svg" />
+    <EmbeddedResource Include="Images\rss-symbol.svg" />
+    <EmbeddedResource Include="Images\search.svg" />
+    <EmbeddedResource Include="Images\speaker.svg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
@@ -244,8 +251,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="FodyWeavers.xml" />
-    <None Include="Images\Tumblr.svg" />
-    <None Include="Images\Xing.svg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\SpeakerPage.xaml">
@@ -273,13 +278,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\SessionsBackground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Images\code.png" />
-    <EmbeddedResource Include="Images\moneybag.png" />
-    <EmbeddedResource Include="Images\rss-symbol.png" />
-    <EmbeddedResource Include="Images\search.png" />
-    <EmbeddedResource Include="Images\speaker.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
