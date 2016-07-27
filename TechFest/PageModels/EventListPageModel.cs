@@ -62,15 +62,17 @@ namespace TechFest.PageModels
 						CoreMethods.SwitchOutRootNavigation(NavigationContainerNames.MainContainer);
 					} else {
 
-                        MessagingCenter.Send(this, "Reload");
+						MessagingCenter.Send(this, "Reload");
 
-                        var masterDetail = FreshIOC.Container.Resolve<IFreshNavigationService>(NavigationContainerNames.MainContainer) as FreshMasterDetailNavigationContainer;
+						var masterDetail = FreshIOC.Container.Resolve<IFreshNavigationService>(NavigationContainerNames.MainContainer) as FreshMasterDetailNavigationContainer;
 						var page = masterDetail.Detail;
-					    page.Parent = null;
-                        page.BackgroundColor = Color.Black;
+						page.Parent = null;
+						page.BackgroundColor = Color.Black;
 						CurrentPage.Navigation.PushAsync(page);
-					}  
-				} 
+					}
+				} else {
+					MessagingCenter.Send(this, "Reload");
+				}
             }
             else
             {

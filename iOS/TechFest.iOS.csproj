@@ -291,6 +291,7 @@
     <Compile Include="Renderers\HtmlLabelRenderer.cs" />
     <Compile Include="Renderers\CustomActivitiyIndicatorRenderer.cs" />
     <Compile Include="Renderers\CustomTabbedPageRenderer.cs" />
+    <Compile Include="Effects\ShadowEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default%402x.png" />
@@ -317,6 +318,9 @@
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Effects\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

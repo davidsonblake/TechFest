@@ -21,10 +21,13 @@ namespace TechFest.iOS
 			SvgImageRenderer.InitializeForms();
 			LoadApplication(new App());
 
-            UITabBar.Appearance.BackgroundColor = UIColor.FromRGB(21, 33, 41);
-			UITabBar.Appearance.TintColor = UIColor.Red;
-            UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(21, 33, 41); //bar background
+            UITabBar.Appearance.BackgroundColor = UIColor.FromRGB(50, 78, 96);
+            UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(50, 78, 96); //bar background
 			UINavigationBar.Appearance.TintColor = UIColor.FromRGB(37,53,64); //Tint color of button items
+			UINavigationBar.Appearance.TitleTextAttributes = new UIStringAttributes() {
+				Font = UIFont.FromName("AvenirNex-Bold", 18),
+				ForegroundColor = UIColor.FromRGB(29, 45, 55)
+			};
 
             return base.FinishedLaunching(app, options);
         }

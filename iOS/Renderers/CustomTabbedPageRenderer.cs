@@ -32,9 +32,14 @@ namespace TechFest.iOS
 
 				this.NavigationItem.SetLeftBarButtonItem(new UIBarButtonItem(SvgFactory.FromBundle("res:Images.Menu",20f), UIBarButtonItemStyle.Plain, null), false);
 
-				tabbedController.ViewControllers[0].TabBarItem.Image = SvgFactory.FromBundle("res:Images.speaker", 20f);
-				tabbedController.ViewControllers[1].TabBarItem.Image = SvgFactory.FromBundle("res:Images.code", 20f);
-				tabbedController.ViewControllers[2].TabBarItem.Image = SvgFactory.FromBundle("res:Images.moneybag", 20f);
+				var speakers = tabbedController.ViewControllers[0];
+				speakers.TabBarItem.Image = SvgFactory.FromBundle("res:Images.speaker", 20f);
+
+				var sessions = tabbedController.ViewControllers[1];
+				sessions.TabBarItem.Image = SvgFactory.FromBundle("res:Images.code", 20f);
+
+				var sponsors = tabbedController.ViewControllers[2];
+				sponsors.TabBarItem.Image = SvgFactory.FromBundle("res:Images.moneybag", 20f);
 
 				isInitialized = true;
 			}
