@@ -5,6 +5,8 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using FFImageLoading.Transformations;
+using XamSvg.XamForms.Uw;
 
 namespace TechFest.UWP
 {
@@ -51,6 +53,9 @@ namespace TechFest.UWP
 
                 Xamarin.Forms.Forms.Init(e);
                 FFImageLoading.Forms.WinUWP.CachedImageRenderer.Init();
+                var ignore = new CircleTransformation();
+
+                SvgImageRenderer.InitializeForms();
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
