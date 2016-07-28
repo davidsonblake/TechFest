@@ -29,6 +29,8 @@ namespace TechFest.iOS
 				ForegroundColor = UIColor.FromRGB(29, 45, 55)
 			};
 
+			UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent,false);
+
             return base.FinishedLaunching(app, options);
         }
     }

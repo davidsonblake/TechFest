@@ -63,7 +63,7 @@ namespace TechFest.Effects
 
 		class ShadowEffect : RoutingEffect
 		{
-			public ShadowEffect() : base("Xamarin.ShadowEffect")
+			public ShadowEffect() : base("TechFest.ShadowEffect")
 			{
 
 			}

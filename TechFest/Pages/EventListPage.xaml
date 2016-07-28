@@ -21,9 +21,9 @@
               HasUnevenRows="True">
       <ListView.GroupHeaderTemplate>
         <DataTemplate>
-          <ViewCell Height="30">
+          <ViewCell>
             <StackLayout BackgroundColor="#1D2D37">
-              <StackLayout VerticalOptions="Center" Margin="21,0,5,0">
+              <StackLayout VerticalOptions="Center" Margin="21,9,5,9">
                 <Label Style="{DynamicResource titleLabel}" Text="{Binding Title}" />
               </StackLayout>
             </StackLayout>

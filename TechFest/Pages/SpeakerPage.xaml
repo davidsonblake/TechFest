@@ -1,101 +1,102 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:helpers="clr-namespace:TechFest.Helpers;assembly=TechFest"
-			 xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-			 xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-			 xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
-			 xmlns:techFest="clr-namespace:TechFest;assembly=TechFest"
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:TechFest.Helpers;assembly=TechFest"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:svg="clr-namespace:XamSvg.XamForms;assembly=XamSvg.XamForms"
+    xmlns:techFest="clr-namespace:TechFest;assembly=TechFest"
 			 x:Class="TechFest.Pages.SpeakerPage">
-  <ContentPage.Content>
-    <Grid BackgroundColor="Transparent">
-      <Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
-      <StackLayout>
-		<BoxView HeightRequest="1" Color="Aqua" HorizontalOptions="Fill" />
-		<ScrollView BackgroundColor="Transparent">
-        <StackLayout>
-          <StackLayout HorizontalOptions="Start" Margin="15,15,15,5">
-            <ffimageloading:CachedImage
-          WidthRequest="120" HeightRequest="120"
-          Aspect="AspectFit"
-          Source="{Binding Speaker.ThumbnailUrl}">
-              <ffimageloading:CachedImage.Transformations>
-                <fftransformations:RoundedTransformation BorderSize="10" BorderHexColor="#00ffff"  />
-					<fftransformations:RoundedTransformation.BorderSize>
-                    	<OnPlatform x:TypeArguments="x:Double" 
-                                    iOS="10"
-                                    Android="0"
-                                    WinPhone="0" />
+    <ContentPage.Content>
+        <Grid BackgroundColor="Transparent">
+            <Image Aspect="AspectFill" Source="{helpers:ImageResource TechFest.Images.SessionsBackground.png}" />
+            <StackLayout>
+                <BoxView HeightRequest="1" Color="Aqua" HorizontalOptions="Fill" />
+                <ScrollView BackgroundColor="Transparent">
+                    <StackLayout Spacing="0" >
+                       <StackLayout HorizontalOptions="Start" Margin="15,15,15,5">
+							<ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+											WidthRequest="170" HeightRequest="170"
+											Aspect="AspectFit"
+											Source="{Binding Speaker.ThumbnailUrl}">
+                <ffimageloading:CachedImage.Transformations>
+                  <fftransformations:RoundedTransformation BorderHexColor="#00ffff">
+                    <fftransformations:RoundedTransformation.BorderSize>
+                      <OnPlatform x:TypeArguments="x:Double"
+                                  iOS="10"
+                                  Android="0"
+                                  WinPhone="0" />
                     </fftransformations:RoundedTransformation.BorderSize>
-              </ffimageloading:CachedImage.Transformations>
-            </ffimageloading:CachedImage>
-          </StackLayout>
-          <StackLayout BackgroundColor="#6B027473">
-            <StackLayout VerticalOptions="Center" Margin="21,0,5,0">
-              <Label VerticalTextAlignment="Center"
-								BackgroundColor="Transparent"
-								TextColor="#fdfdfd"
-								FontFamily="AvenirNext-Bold"
-								FontSize="19.55" Text="{Binding Speaker.Name}" />
+                  </fftransformations:RoundedTransformation>
+                </ffimageloading:CachedImage.Transformations>
+              </ffimageloading:CachedImage>
+                        </StackLayout> 
+						<StackLayout BackgroundColor="#6B027473">
+							<StackLayout VerticalOptions="Center" Margin="21,0,5,0">
+								<Label VerticalTextAlignment="Center"
+									BackgroundColor="Transparent"
+									TextColor="#fdfdfd"
+									FontAttributes="Bold"
+									FontFamily="AvenirNext-Bold"
+									FontSize="19.55" Text="{Binding Speaker.Name}" />
+							</StackLayout>
+						</StackLayout>
+						<StackLayout BackgroundColor="#8C02d2d0">
+							<StackLayout Margin="41,9,5,9">
+								<StackLayout Orientation="Horizontal">
+									<Label TextColor="#cce1e2"
+                        				FontFamily="AvenirNext-Bold"
+                        				FontSize="15.55"
+                        				Text="Link:" />
+									<Label TextColor="#cce1e2"
+                        				FontFamily="AvenirNext-Medium"
+                        				FontSize="13.55"
+                        				Text="{Binding Speaker.Link}" />
+								</StackLayout>
+								<StackLayout Orientation="Horizontal">
+									<Label TextColor="#cce1e2"
+                        				FontFamily="AvenirNext-Bold"
+                        				FontSize="15.55"
+                        				Text="Company:" />
+									<Label TextColor="#cce1e2"
+                        				FontFamily="AvenirNext-Medium"
+                        				FontSize="13.55"
+                        				Text="{Binding Speaker.Company}" />
+								</StackLayout>
+								<Label TextColor="#cce1e2"
+              						FontFamily="AvenirNext-Medium"
+              						FontSize="13.55"
+              						Text="{Binding Speaker.Bio}" />
+							</StackLayout>
+						</StackLayout> 
+                        <techFest:WrapLayout Padding="5" BackgroundColor="{StaticResource detailBackground}" HorizontalOptions="Fill" Spacing="2" >
+                            <svg:SvgImage Svg="res:Images.YouTube" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.YouTube}" IsVisible="{Binding Speaker.YouTube, Converter={StaticResource HasDataConverter }}" />
+                            <svg:SvgImage Svg="res:Images.Facebook" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Facebook}" IsVisible="{Binding Speaker.Facebook, Converter={StaticResource HasDataConverter }}" />
+                            <svg:SvgImage Svg="res:Images.Twitter" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Twitter}" IsVisible="{Binding Speaker.Twitter, Converter={StaticResource HasDataConverter }}" />
+                            <svg:SvgImage Svg="res:Images.GooglePlus" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.GooglePlus}" IsVisible="{Binding Speaker.GooglePlus, Converter={StaticResource HasDataConverter }}"/>
+                            <svg:SvgImage Svg="res:Images.Github" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Github}" IsVisible="{Binding Speaker.Github, Converter={StaticResource HasDataConverter }}"/>
+                            <svg:SvgImage Svg="res:Images.LinkedIn" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.LinkedIn}" IsVisible="{Binding Speaker.LinkedIn, Converter={StaticResource HasDataConverter }}" />
+                            <svg:SvgImage Svg="res:Images.RSS" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Rss}" IsVisible="{Binding Speaker.Rss, Converter={StaticResource HasDataConverter }}"/>
+                            <svg:SvgImage Svg="res:Images.StackOverflow" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.StackOverflow}" IsVisible="{Binding Speaker.StackOverflow, Converter={StaticResource HasDataConverter }}" HeightRequest="32"  />
+                            <svg:SvgImage Svg="res:Images.pinterest" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Pinterest}" IsVisible="{Binding Speaker.Pinterest, Converter={StaticResource HasDataConverter }}" />
+                            <svg:SvgImage Svg="res:Images.Flickr" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Flickr}" IsVisible="{Binding Speaker.Flickr, Converter={StaticResource HasDataConverter }}" />
+                            <svg:SvgImage Svg="res:Images.Aboutme" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.AboutMe}" IsVisible="{Binding Speaker.AboutMe, Converter={StaticResource HasDataConverter }}" />
+                            <svg:SvgImage Svg="res:Images.Speakerrate" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.SpeakerRate}" HeightRequest="32" IsVisible="{Binding Speaker.SpeakerRate, Converter={StaticResource HasDataConverter }}" />
+                            <svg:SvgImage Svg="res:Images.Dribbble" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Dribbble}" IsVisible="{Binding Speaker.Dribble, Converter={StaticResource HasDataConverter }}" />
+                            <svg:SvgImage Svg="res:Images.FourSquare" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Foursquare}" IsVisible="{Binding Speaker.Foursquare, Converter={StaticResource HasDataConverter }}"/>
+                            <svg:SvgImage Svg="res:Images.Instagram" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Instagram}" IsVisible="{Binding Speaker.Instagram, Converter={StaticResource HasDataConverter }}" />
+                            <svg:SvgImage Svg="res:Images.Myspace" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.MySpace}" IsVisible="{Binding Speaker.MySpace, Converter={StaticResource HasDataConverter }}" />
+                            <svg:SvgImage Svg="res:Images.SlideShare" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.SlideShare}" IsVisible="{Binding Speaker.SlideShare, Converter={StaticResource HasDataConverter }}" />
+                            <svg:SvgImage Svg="res:Images.SoundCloud" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.SoundCloud}" IsVisible="{Binding Speaker.SoundCloud, Converter={StaticResource HasDataConverter }}" />
+                            <svg:SvgImage Svg="res:Images.Speakerdeck" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.SpeakerDeck}" IsVisible="{Binding Speaker.SpeakerDeck, Converter={StaticResource HasDataConverter }}" />
+                            <svg:SvgImage Svg="res:Images.Tumblr" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Tumblr}" IsVisible="{Binding Speaker.Tumblr, Converter={StaticResource HasDataConverter }}" />
+                            <svg:SvgImage Svg="res:Images.Xing" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Xing}" IsVisible="{Binding Speaker.Xing, Converter={StaticResource HasDataConverter }}" />
+                        </techFest:WrapLayout>
+                    </StackLayout>
+                </ScrollView>
+                <BoxView HeightRequest="1" VerticalOptions="EndAndExpand" Color="Aqua" HorizontalOptions="Fill" />
             </StackLayout>
-          </StackLayout>
-          <StackLayout BackgroundColor="#8C02d2d0">
-            <StackLayout Margin="41,9,5,9">
-              <StackLayout Orientation="Horizontal">
-
-                <Label TextColor="#cce1e2"
-                        FontFamily="AvenirNext-Bold"
-                        FontSize="13.55"
-                        Text="Link:" />
-                <Label TextColor="#cce1e2"
-                        FontFamily="AvenirNext-Medium"
-                        FontSize="13.55"
-                        Text="{Binding Speaker.Link}" />
-              </StackLayout>
-              <StackLayout Orientation="Horizontal">
-
-                <Label TextColor="#cce1e2"
-                        FontFamily="AvenirNext-Bold"
-                        FontSize="13.55"
-                        Text="Company:" />
-                <Label TextColor="#cce1e2"
-                        FontFamily="AvenirNext-Medium"
-                        FontSize="13.55"
-                        Text="{Binding Speaker.Company}" />
-              </StackLayout>
-              <Label TextColor="#cce1e2"
-              FontFamily="AvenirNext-Medium"
-              FontSize="13.55"
-              Text="{Binding Speaker.Bio}" />
-            </StackLayout>
-            <techFest:WrapLayout Spacing="2" >
-              	<svg:SvgImage Svg="res:Images.YouTube" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.YouTube}" IsVisible="{Binding Speaker.YouTube, Converter={StaticResource HasDataConverter }}" />
-				        <svg:SvgImage Svg="res:Images.Facebook" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Facebook}" IsVisible="{Binding Speaker.Facebook, Converter={StaticResource HasDataConverter }}" />
-				        <svg:SvgImage Svg="res:Images.Twitter" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Twitter}" IsVisible="{Binding Speaker.Twitter, Converter={StaticResource HasDataConverter }}" />
-			          	<svg:SvgImage Svg="res:Images.GooglePlus" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.GooglePlus}" IsVisible="{Binding Speaker.GooglePlus, Converter={StaticResource HasDataConverter }}"/>
-				        <svg:SvgImage Svg="res:Images.Github" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Github}" IsVisible="{Binding Speaker.Github, Converter={StaticResource HasDataConverter }}"/>
-				        <svg:SvgImage Svg="res:Images.LinkedIn" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.LinkedIn}" IsVisible="{Binding Speaker.LinkedIn, Converter={StaticResource HasDataConverter }}" />
-				        <svg:SvgImage Svg="res:Images.RSS" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Rss}" IsVisible="{Binding Speaker.Rss, Converter={StaticResource HasDataConverter }}"/>
-				        <svg:SvgImage Svg="res:Images.StackOverflow" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.StackOverflow}" IsVisible="{Binding Speaker.StackOverflow, Converter={StaticResource HasDataConverter }}" HeightRequest="32"  />
-				        <svg:SvgImage Svg="res:Images.pinterest" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Pinterest}" IsVisible="{Binding Speaker.Pinterest, Converter={StaticResource HasDataConverter }}" />
-				        <svg:SvgImage Svg="res:Images.Flickr" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Flickr}" IsVisible="{Binding Speaker.Flickr, Converter={StaticResource HasDataConverter }}" />
-				        <svg:SvgImage Svg="res:Images.Aboutme" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.AboutMe}" IsVisible="{Binding Speaker.AboutMe, Converter={StaticResource HasDataConverter }}" />
-				        <svg:SvgImage Svg="res:Images.Speakerrate" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.SpeakerRate}" HeightRequest="32" IsVisible="{Binding Speaker.SpeakerRate, Converter={StaticResource HasDataConverter }}" />
-				        <svg:SvgImage Svg="res:Images.Dribbble" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Dribbble}" IsVisible="{Binding Speaker.Dribble, Converter={StaticResource HasDataConverter }}" />
-				        <svg:SvgImage Svg="res:Images.FourSquare" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Foursquare}" IsVisible="{Binding Speaker.Foursquare, Converter={StaticResource HasDataConverter }}"/>
-				        <svg:SvgImage Svg="res:Images.Instagram" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Instagram}" IsVisible="{Binding Speaker.Instagram, Converter={StaticResource HasDataConverter }}" />
-				        <svg:SvgImage Svg="res:Images.Myspace" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.MySpace}" IsVisible="{Binding Speaker.MySpace, Converter={StaticResource HasDataConverter }}" />
-				        <svg:SvgImage Svg="res:Images.SlideShare" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.SlideShare}" IsVisible="{Binding Speaker.SlideShare, Converter={StaticResource HasDataConverter }}" />
-				        <svg:SvgImage Svg="res:Images.SoundCloud" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.SoundCloud}" IsVisible="{Binding Speaker.SoundCloud, Converter={StaticResource HasDataConverter }}" />
-				        <svg:SvgImage Svg="res:Images.Speakerdeck" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.SpeakerDeck}" IsVisible="{Binding Speaker.SpeakerDeck, Converter={StaticResource HasDataConverter }}" />
-				        <svg:SvgImage Svg="res:Images.Tumblr" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Tumblr}" IsVisible="{Binding Speaker.Tumblr, Converter={StaticResource HasDataConverter }}" />
-				        <svg:SvgImage Svg="res:Images.Xing" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Speaker.Xing}" IsVisible="{Binding Speaker.Xing, Converter={StaticResource HasDataConverter }}" />
-            </techFest:WrapLayout>
-          </StackLayout>
-        </StackLayout>
-      </ScrollView>
-		<BoxView HeightRequest="1" VerticalOptions="EndAndExpand" Color="Aqua" HorizontalOptions="Fill" />
-		</StackLayout>
-    </Grid>
-  </ContentPage.Content>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>

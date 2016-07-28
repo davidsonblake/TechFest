@@ -72,9 +72,12 @@ namespace TechFest.PageModels
             IsBusy = false;
         }
 
-        private void HandleSpeakerSelected(Speaker speaker)
+        private async void HandleSpeakerSelected(Speaker speaker)
         {
-            CoreMethods.PushPageModel<SpeakerPageModel>(speaker);
+			if (string.IsNullOrEmpty(speaker.Name))
+				return;
+			
+            await CoreMethods.PushPageModel<SpeakerPageModel>(speaker);
         }
     }
 }

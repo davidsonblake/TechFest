@@ -1,5 +1,4 @@
-﻿using BigTed;
-using TechFest.iOS.Renderers;
+﻿using TechFest.iOS.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
@@ -8,27 +7,12 @@ namespace TechFest.iOS.Renderers
 {
     public class CustomActivitiyIndicatorRenderer : ActivityIndicatorRenderer
     {
-        public CustomActivitiyIndicatorRenderer()
-        {
-        }
+		protected override void OnElementChanged(ElementChangedEventArgs<ActivityIndicator> e)
+		{
+			base.OnElementChanged(e);
 
-        protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == "IsRunning")
-            {
-                if (this.Element.IsRunning)
-                {
-					BTProgressHUD.Show(maskType: ProgressHUD.MaskType.Gradient);
-                }
-                else
-                {
-                    BTProgressHUD.Dismiss();
-                }
-            }
-            else
-            {
-                base.OnElementPropertyChanged(sender, e);
-            }
-        }
+			Control.ActivityIndicatorViewStyle = UIKit.UIActivityIndicatorViewStyle.WhiteLarge;
+		}
+
     }
 }
