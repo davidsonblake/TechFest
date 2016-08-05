@@ -47,9 +47,11 @@
 								<StackLayout Orientation="Horizontal">
 									<Label TextColor="#cce1e2"
                         				FontFamily="AvenirNext-Bold"
+										VerticalTextAlignment="Center"
                         				FontSize="15.55"
                         				Text="Link:" />
-									<Label TextColor="#cce1e2"
+									<techFest:HtmlLabel TextColor="#cce1e2"
+										VerticalTextAlignment="Center"
                         				FontFamily="AvenirNext-Medium"
                         				FontSize="13.55"
                         				Text="{Binding Speaker.Link}" />
@@ -57,14 +59,16 @@
 								<StackLayout Orientation="Horizontal">
 									<Label TextColor="#cce1e2"
                         				FontFamily="AvenirNext-Bold"
+										VerticalTextAlignment="Center"
                         				FontSize="15.55"
                         				Text="Company:" />
 									<Label TextColor="#cce1e2"
                         				FontFamily="AvenirNext-Medium"
+										VerticalTextAlignment="Center"
                         				FontSize="13.55"
                         				Text="{Binding Speaker.Company}" />
 								</StackLayout>
-								<Label TextColor="#cce1e2"
+								<techFest:HtmlLabel TextColor="#cce1e2"
               						FontFamily="AvenirNext-Medium"
               						FontSize="13.55"
               						Text="{Binding Speaker.Bio}" />

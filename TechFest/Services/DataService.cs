@@ -102,6 +102,8 @@ namespace TechFest.Services
                 for (int i = 0; i < speakers.Count(); i++)
                 {
                     speakers[i].Name = rssItems[i].Title.Text;
+					if (speakers[i].Link.StartsWith(@"//"))
+						speakers[i].Link = "http:" + speakers[i].Link;
                 }
 
                 return speakers;
@@ -126,6 +128,8 @@ namespace TechFest.Services
                 for (int i = 0; i < sponsors.Count(); i++)
                 {
                     sponsors[i].Name = rssItems[i].Title.Text;
+					if (sponsors[i].Link.StartsWith(@"//"))
+						sponsors[i].Link = "http:" + sponsors[i].Link;
                 }
 
                 return sponsors;

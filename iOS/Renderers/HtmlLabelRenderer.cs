@@ -1,16 +1,19 @@
 ﻿using CoreGraphics;
 using Foundation;
+using TechFest;
 using TechFest.iOS;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(Label), typeof(HtmlLabelRenderer))]
+[assembly: ExportRenderer(typeof(HtmlLabel), typeof(HtmlLabelRenderer))]
 
 namespace TechFest.iOS
 {
     public class HtmlLabelRenderer : ViewRenderer
     {
+		private UITextView _tv;
+		
         protected override void OnElementChanged(ElementChangedEventArgs<View> e)
         {
             base.OnElementChanged(e);
@@ -24,24 +27,31 @@ namespace TechFest.iOS
 			if (string.IsNullOrEmpty(view.Text))
 				return;
 
-            UITextView uilabelleftside = new UITextView(new CGRect(0, 0, Element.Width, Element.Height));
-            var text = view.Text.AsAttributedString(NSDocumentType.HTML);
-            uilabelleftside.AttributedText = text;
-            uilabelleftside.Font = UIFont.SystemFontOfSize((float)view.FontSize);
-            uilabelleftside.Editable = false;
-            uilabelleftside.TextColor = view.TextColor.ToUIColor();
+			if (_tv == null) {
 
-            // Setting the data detector types mask to capture all types of link-able data
-            uilabelleftside.DataDetectorTypes = UIDataDetectorType.All;
-            uilabelleftside.BackgroundColor = UIColor.Clear;
-            
-            if (!string.IsNullOrEmpty(view.FontFamily))
-            {
-                uilabelleftside.Font = UIFont.FromName(view.FontFamily, (System.nfloat)view.FontSize);
-            }
+				UITextView uilabelleftside = new UITextView(new CGRect(0, 0, Element.Width, Element.Height));
+				var text = view.Text.AsAttributedString(NSDocumentType.HTML);
+				uilabelleftside.AttributedText = text;
+				uilabelleftside.Font = UIFont.SystemFontOfSize((float)view.FontSize);
+				uilabelleftside.Editable = false;
+				uilabelleftside.TextColor = view.TextColor.ToUIColor();
+				uilabelleftside.ScrollEnabled = false;
+				uilabelleftside.TintColor = UIColor.LightGray;
+				uilabelleftside.TextContainer.LineFragmentPadding = 0f;
+				uilabelleftside.TextContainerInset = new UIEdgeInsets(2, 0, 0, 0);
 
-            // overriding Xamarin Forms Label and replace with our native control
-            SetNativeControl(uilabelleftside);
+				// Setting the data detector types mask to capture all types of link-able data
+				uilabelleftside.DataDetectorTypes = UIDataDetectorType.All;
+				uilabelleftside.BackgroundColor = UIColor.Clear;
+
+				if (!string.IsNullOrEmpty(view.FontFamily)) {
+					uilabelleftside.Font = UIFont.FromName(view.FontFamily, (System.nfloat)view.FontSize);
+				}
+
+				// overriding Xamarin Forms Label and replace with our native control
+				SetNativeControl(uilabelleftside);
+				_tv = uilabelleftside;
+			}
         }
     }
 

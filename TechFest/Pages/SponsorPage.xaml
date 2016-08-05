@@ -18,18 +18,16 @@
         		</StackLayout>
 	    		<StackLayout BackgroundColor="{StaticResource detailBackground}">
 					<StackLayout Margin="41,9,5,9">
-        	  <StackLayout Orientation="Horizontal">
-              <Label Style="{DynamicResource detailLabel}" FontAttributes="Bold" Text="Link:" />
-						   <Label Style="{DynamicResource detailLabel}" Text="{Binding Sponsor.Link}" />
-            </StackLayout>
-		    		<StackLayout Orientation="Horizontal">
-              <Label Style="{DynamicResource detailLabel}" FontAttributes="Bold" Text="Sponsorship Level:" />
-						  <Label Style="{DynamicResource detailLabel}" Text="{Binding Sponsor.SponsorshipLevel}" />
-            </StackLayout>
-        		<StackLayout Orientation="Horizontal">
-						  <Label Style="{DynamicResource detailLabel}" Text="{Binding Sponsor.Description}" />
-            </StackLayout>
-				  </StackLayout>
+        	  			<StackLayout Orientation="Horizontal">
+              				<Label Style="{DynamicResource detailLabel}" FontAttributes="Bold" Text="Link:" />
+						   	<techFest:HtmlLabel Style="{DynamicResource detailLabel}" Text="{Binding Sponsor.Link}" />
+            			</StackLayout>
+		    			<StackLayout Orientation="Horizontal">
+             				<Label Style="{DynamicResource detailLabel}" FontAttributes="Bold" Text="Sponsorship Level:" />
+							<Label Style="{DynamicResource detailLabel}" Text="{Binding Sponsor.SponsorshipLevel}" />
+            			</StackLayout>
+						<techFest:HtmlLabel Style="{DynamicResource detailLabel}" Text="{Binding Sponsor.Description}" />
+					</StackLayout>
     			</StackLayout>
 			<techFest:WrapLayout Padding="5" BackgroundColor="{StaticResource detailBackground}" Spacing="2" >
               <xamForms:SvgImage Svg="res:Images.YouTube" HeightRequest="32" Command="{Binding SocialSelected}" CommandParameter="{Binding Sponsor.YouTube}" IsVisible="{Binding Sponsor.YouTube, Converter={StaticResource HasDataConverter }}" />
